@@ -21,14 +21,14 @@ repository               : "prawat00/prawat00.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  avatar           : "profile.jpeg"
+  name             : "Priyanshu Rawat"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  bio              : "Deeply interested in LLM optimization and deep learning innovation"
+  location         : "NY,US"
+  employer         : "University of Rochester"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "prwt1507@gmail.com" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
