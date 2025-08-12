@@ -1,20 +1,20 @@
 export const USER = {
-  firstName: "Chánh Đại",
-  lastName: "Nguyễn",
-  displayName: "Chánh Đại",
-  username: "ncdai",
+  firstName: "Priyanshu",
+  lastName: "Rawat",
+  displayName: "Priyanshu Rawat",
+  username: "PRawat",
   gender: "male",
   pronouns: "he/him",
-  bio: "Creating with code. Small details matter.",
+  bio: "Data",
   flipSentences: [
     "Creating with code. Small details matter.",
     "Design Engineer",
     "Open Source Contributor",
   ],
-  address: "Thanh My Tay Ward, Ho Chi Minh City, Viet Nam",
-  phoneNumber: "Kzg0Nzc3ODg4MTQ4", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  email: "ZGFpQGNoYW5oZGFpLmNvbQ==", // base64 encoded
-  website: "https://chanhdai.com",
+  address: "New York",
+  phoneNumber: "KzEgNTg1IDIzMCAyMDI2", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
+  email: "cHJ3dDE1MDdAZ21haWwuY29t", // base64 encoded
+  website: "MYDOMAIN.com",
   otherWebsites: [
     "https://dai.ng",
     "https://dai.so",
@@ -28,7 +28,7 @@ export const USER = {
     "https://ncdai.net",
     "https://dai.is-a.dev",
   ],
-  jobTitle: "Design Engineer",
+  jobTitle: "Data Scientist",
   jobs: [
     {
       title: "Senior Frontend Developer & UI Design Lead",
