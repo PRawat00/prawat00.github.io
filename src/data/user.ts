@@ -14,7 +14,7 @@ export const USER = {
   address: "New York",
   phoneNumber: "KzEgNTg1IDIzMCAyMDI2", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   email: "cHJ3dDE1MDdAZ21haWwuY29t", // base64 encoded
-  website: "MYDOMAIN.com",
+  website: "prwt.dev",
   otherWebsites: [
     "https://dai.ng",
     "https://dai.so",
