@@ -29,8 +29,8 @@ export const MAIN_NAV: NavItem[] = [
   },
 ];
 
-export const SOURCE_CODE_GITHUB_REPO = "prwt/portfolio";
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/prwt/portfolio";
+export const SOURCE_CODE_GITHUB_REPO = "PRawat00/portfolio";
+export const SOURCE_CODE_GITHUB_URL = "https://github.com/PRawat00/portfolio";
 
 export const UTM_PARAMS = {
   utm_source: "prwt.dev",

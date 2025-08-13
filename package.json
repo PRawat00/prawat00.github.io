@@ -7,18 +7,18 @@
   "author": {
     "name": "Priyanshu Rawat",
     "email": "prawat3@ur.rochester.edu",
-    "url": "https://github.com/prwt"
+    "url": "https://github.com/PRawat00"
   },
   "contributors": [
     {
       "name": "Priyanshu Rawat",
       "email": "prawat3@ur.rochester.edu",
-      "url": "https://github.com/prwt"
+      "url": "https://github.com/PRawat00"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prwt/portfolio.git"
+    "url": "git+https://github.com/PRawat00/portfolio.git"
   },
   "scripts": {
     "dev": "next dev -p 1408 --turbopack",

@@ -10,7 +10,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     icon: "/images/icons/github.webp",
     title: "GitHub",
-    description: "prwt",
-    href: "https://github.com/prwt",
+    description: "PRawat00",
+    href: "https://github.com/PRawat00",
   },
 ];

@@ -19,7 +19,7 @@ export const USER = {
   website: "prwt.dev",
   otherWebsites: [
     "https://linkedin.com/in/prwt",
-    "https://github.com/prwt",
+    "https://github.com/PRawat00",
     "https://twitter.com/prwt_dev",
     "https://medium.com/@prwt",
   ],
@@ -41,7 +41,7 @@ Data Scientist and AI Engineer with expertise in building production-grade RAG s
 
 Background in computer vision research and distributed machine learning with strong foundation in PyTorch, TensorFlow, and cloud technologies. Passionate about creating AI solutions that solve real-world problems in finance, research computing, and enterprise automation.
 
-One of my key projects, [FinRAG3](https://github.com/prwt/finrag3), is a 6-phase agentic AI system that processes SEC filings and fund prospectuses with 95% accuracy, reducing analysis time from hours to 5 minutes. I've also developed [Steam Insights](https://github.com/prwt/steam-insights), a comprehensive gaming market analysis system processing 8M+ data points with ML forecasting.
+One of my key projects, [FinRAG3](https://github.com/PRawat00/finrag3), is a 6-phase agentic AI system that processes SEC filings and fund prospectuses with 95% accuracy, reducing analysis time from hours to 5 minutes. I've also developed [Steam Insights](https://github.com/PRawat00/steam-insights), a comprehensive gaming market analysis system processing 8M+ data points with ML forecasting.
 
 Let's connect and collaborate on cutting-edge AI solutions!
   `,
