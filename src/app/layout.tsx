@@ -77,19 +77,15 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "https://assets.chanhdai.com/images/favicon.ico",
-        sizes: "any",
+        url: "/favicon.ico",
+        sizes: "32x32",
       },
       {
-        url: "https://assets.chanhdai.com/images/favicon.svg",
+        url: "/icon.svg",
         type: "image/svg+xml",
+        sizes: "any",
       },
     ],
-    apple: {
-      url: "https://assets.chanhdai.com/images/apple-touch-icon.png",
-      type: "image/png",
-      sizes: "180x180",
-    },
   },
 };
 
