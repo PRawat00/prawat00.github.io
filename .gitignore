@@ -42,3 +42,9 @@ next-env.d.ts
 
 # ncdai
 .ncdai
+
+# Temporary files and guides
+NEWTHINGS/
+CONTENT-MANAGEMENT-GUIDE.md
+PERSONAL-INFO-GUIDE.md
+personal-info-template.json

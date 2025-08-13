@@ -2,254 +2,86 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
-    id: "react-wheel-picker",
-    title: "React Wheel Picker",
+    id: "steam-insights",
+    title: "Steam Insights (Gaming Market Analysis & Forecasting)",
     period: {
-      start: "05.2025",
+      start: "08.2024",
+      end: "12.2024",
     },
-    link: "https://react-wheel-picker.chanhdai.com",
+    link: "https://github.com/prwt/steam-insights",
     skills: [
-      "Open Source",
-      "React",
-      "TypeScript",
-      "Monorepo",
-      "Turborepo",
-      "pnpm-workspace",
-      "Package Publishing",
-      "NPM Registry",
-      "GitHub Actions",
+      "Apache Airflow",
+      "Databricks Spark",
+      "Kafka",
+      "XGBoost",
+      "Random Forest",
+      "ARIMA",
+      "Prophet",
+      "Python",
     ],
-    description: `iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.
-- 📱 Natural touch scrolling with smooth inertia effect
-- 🖱️ Mouse drag and scroll support for desktop
-- 🔄 Infinite loop scrolling
-- 🎨 Unstyled components for complete style customization
-- ⚡️ Easy installation via shadcn CLI
-
-This project is proudly supported by:
-
-[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
-`,
-    logo: "https://assets.chanhdai.com/images/project-logos/react-wheel-picker.svg",
+    description: `Comprehensive gaming market analysis and forecasting system processing 8M+ data points from 140K+ games. Built ETL pipeline with Apache Airflow, Databricks Spark, and Kafka. Developed ML models (XGBoost, Random Forest) for review analysis and pricing forecasts. Implemented time series forecasting (ARIMA, Prophet) achieving 85% accuracy in genre demand predictions and reliable sales forecasting.`,
+    logo: "/images/projects/steam-insights.svg",
     isExpanded: true,
   },
   {
-    id: "chanhdaidotcom",
-    title: "chanhdai.com",
+    id: "finrag3",
+    title: "FinRAG3 - Agentic Financial Document AI",
     period: {
-      start: "01.2025",
+      start: "02.2025",
     },
-    link: "https://github.com/ncdai/chanhdai.com",
+    link: "https://github.com/prwt/finrag3",
     skills: [
-      "Open Source",
-      "Next.js 15",
-      "Tailwind CSS v4",
-      "Radix UI",
-      "Motion",
-      "shadcn/ui",
-      "Component Registry",
-      "Vercel",
-    ],
-    description: `A minimal portfolio, component registry, and blog.
-- Clean & modern design
-- Light & Dark theme support
-- vCard integration
-- SEO optimization: [JSON-LD schema](https://json-ld.org), sitemap, robots
-- AI-friendly [/llms.txt](https://llmstxt.org)
-- Spam-protected email
-- Installable PWA
-
-Blog Features:
-- MDX & Markdown support
-- Syntax Highlighting for better readability
-- RSS Feed for easy content distribution
-- Dynamic OG Images for rich previews`,
-    logo: "https://assets.chanhdai.com/images/project-logos/chanhdaidotcom.svg",
-  },
-  {
-    id: "quaricdotcom",
-    title: "quaric.com",
-    period: {
-      start: "03.2024",
-    },
-    link: "https://quaric.com",
-    skills: [
-      "Company Project",
-      "Next.js 15",
-      "Tailwind CSS v3",
-      "shadcn/ui",
-      "Strapi 5",
-      "VNPAY-QR",
+      "LangGraph",
+      "LangChain",
+      "ChromaDB",
+      "ColBERT v2",
+      "FastAPI",
       "Docker",
-      "Docker Compose",
-      "NGINX",
+      "GPU Computing",
     ],
-    logo: "https://assets.chanhdai.com/images/project-logos/quaricdotcom.svg",
+    description: `6-phase agentic AI system for automated investment due diligence processing SEC filings (10-K, 10-Q) and fund prospectuses. Features custom parsing algorithms with 95% accuracy, multi-GPU optimization, and enterprise-grade MLOps pipeline. Reduces financial document analysis time from hours to 5 minutes.`,
+    logo: "/images/projects/finrag3.svg",
+    isExpanded: false,
   },
   {
-    id: "zadark",
-    title: "ZaDark",
+    id: "hpc-chatbot",
+    title: "HPC Documentation Assistant",
     period: {
-      start: "01.2022",
+      start: "02.2025",
     },
-    link: "https://zadark.com",
+    link: "https://github.com/prwt/hpc-chatbot",
     skills: [
-      "Pet Project",
-      "Open Source",
-      "Browser Extension",
-      "CLI",
-      "Docusaurus 3",
-    ],
-    description: `ZaDark adds Dark Mode, anti-peeking, customizable fonts, backgrounds, and more to Zalo Web and PC.
-- Earned 10M+ VND in net sales from a paid Safari Extension.
-- 80,000+ downloads on SourceForge (awarded Community Leader badge by SourceForge)
-- 15,000+ active users via Chrome Web Store
-- Bronze Medal — 10th Design, Manufacturing, and Application Award 2022`,
-    logo: "https://assets.chanhdai.com/images/project-logos/zadark.svg",
-  },
-  {
-    id: "qabox",
-    title: "QABox",
-    period: {
-      start: "07.2023",
-      end: "07.2023",
-    },
-    link: "https://github.com/ncdai/qabox",
-    skills: [
-      "University Project",
-      "PHP",
-      "MySQL",
-      "MVC",
+      "RAG Systems",
+      "Vector Databases",
+      "FastAPI",
       "Docker",
-      "Docker Compose",
+      "HPC Systems",
+      "Agentic AI",
     ],
-    description:
-      "- Course: Distributed Applications — FIT@HCMUS\n- Project Score: 10/10\n- Source Code: https://github.com/ncdai/qabox",
+    description: `RAG-based chatbot for High Performance Computing documentation automation. Features agentic AI for dynamic data scraping, vector database management for HPC queries, and automated user onboarding system for university research computing infrastructure.`,
+    logo: "/images/projects/hpc-chatbot.svg",
+    isExpanded: false,
   },
   {
-    id: "taskbox",
-    title: "TaskBox",
+    id: "health-analytics",
+    title: "Health Analytics Platform",
     period: {
-      start: "07.2023",
-      end: "07.2023",
+      start: "01.2023",
+      end: "03.2023",
     },
-    link: "https://github.com/ncdai/taskbox",
+    link: "https://github.com/prwt/health-analytics",
     skills: [
-      "University Project",
-      "PHP",
-      "MySQL",
-      "MVC",
-      "Docker",
-      "Docker Compose",
-    ],
-    description:
-      "- Course: Distributed Applications — FIT@HCMUS\n- Project Score: 10/10\n- Source Code: https://github.com/ncdai/taskbox",
-  },
-  {
-    id: "daichat-app",
-    title: "DaiChat App",
-    period: {
-      start: "07.2020",
-      end: "07.2020",
-    },
-    link: "https://www.youtube.com/watch?v=H5U3J_W1low",
-    skills: ["University Project", "Java", "Java Swing", "Java Networking"],
-    description: `- Course: Java Application Programming — FIT@HCMUS
-- Requirement: Developed a real-time chat application using Java technologies
-- Project Score: 10/10
-- Source Code:
-  - Server: https://github.com/ncdai/ltudjava-summer2020-chatapp_server
-  - Client: https://github.com/ncdai/ltudjava-summer2020-chatapp_client`,
-  },
-  {
-    id: "qlsv-app",
-    title: "QLSV App",
-    period: {
-      start: "06.2020",
-      end: "06.2020",
-    },
-    link: "https://www.youtube.com/watch?v=tG9SZEBrwog",
-    skills: ["University Project", "Java", "Java Swing", "Hibernate", "MySQL"],
-    description: `- Course: Java Application Programming — FIT@HCMUS
-- Requirement: Built a student management system with role-based functionalities using Java technologies
-- Project Score: 10/10
-- Source Code: https://github.com/ncdai/ltudjava-summer2020-hibernate`,
-  },
-  {
-    id: "penphy",
-    title: "Penphy",
-    period: {
-      start: "01.2019",
-      end: "08.2019",
-    },
-    link: "https://www.youtube.com/watch?v=EdU7rUO-UA4",
-    skills: ["Startup Project", "JavaScript", "React Native"],
-    description: "2nd Prize — Business Startup Competition 2019",
-  },
-  {
-    id: "unlimitedstudy",
-    title: "UnlimitedStudy",
-    period: {
-      start: "01.2017",
-      end: "08.2018",
-    },
-    link: "https://muctim.tuoitre.vn/cong-cu-ho-tro-viec-day-va-hoc-55107.htm",
-    skills: [
-      "National Competition",
-      "Creative Software",
-      "PHP",
-      "Laravel 4",
-      "MySQL",
-      "jQuery",
-      "Bootstrap 3",
-    ],
-    description: `UnlimitedStudy is a website that provides teaching and learning support tools for teachers and students.
-- 3rd Prize — National Science and Engineering Fair 2018 (ViSEF)
-- 1st Prize — Can Tho City Science and Engineering Fair 2018
-- 3rd Prize — National Young Informatics Contest 2018
-- 2nd Prize — Can Tho City Youth and Children's Creativity Contest 2018
-- 3rd Prize — Can Tho City Young Informatics Contest 2018
-- Reached 7,000+ users, mainly high school students in Can Tho City.
-- Pilot implemented in high schools across Can Tho City with English quizzes, supervised by English subject specialists from the Can Tho City Department of Education and Training.`,
-    logo: "https://assets.chanhdai.com/images/project-logos/unlimitedstudy.webp",
-  },
-  {
-    id: "dmessage",
-    title: "DMessage",
-    period: {
-      start: "05.2017",
-      end: "05.2017",
-    },
-    link: "https://github.com/ncdai/DMessage",
-    skills: [
-      "Self-learning Project",
-      "Pet Project",
-      "Express.js",
-      "Socket.io",
+      "Django",
       "MongoDB",
-      "Mongoose ODM",
+      "LLaMA",
+      "FactCC",
+      "RAG Systems",
+      "spaCy",
+      "NLP",
+      "Web Scraping",
     ],
-    description:
-      "A Messenger clone built to practice real-time communication using Socket.IO. This project showcases my self-learning journey in implementing WebSockets for instant messaging.",
-  },
-  {
-    id: "study-english",
-    title: "Study English",
-    period: {
-      start: "11.2016",
-      end: "12.2017",
-    },
-    link: "https://www.youtube.com/watch?v=OYgugvjqU4A",
-    skills: [
-      "National Competition",
-      "Creative Software",
-      "PHP",
-      "Laravel 4",
-      "MySQL",
-    ],
-    description: `Study English is a free, mobile-friendly website for high school English learning, offering vocabulary, quizzes, listening practice, and more.
-- Consolation Prize — National Youth and Children's Creativity Contest 2016
-- 1st Prize — Can Tho City Youth and Children's Creativity Contest 2016
-- Consolation Prize — Can Tho City Young Informatics Contest 2016`,
+    description: `End-to-end health analytics platform using Django and MongoDB for SSOT data collection. Implemented RAG approach with LLaMA and FactCC for accurate health summaries. Built NLP pipeline with spaCy and LSA for health trend extraction. Achieved 60% increase in data availability and 75% reduction in manual errors through adaptive web scraping.`,
+    logo: "/images/projects/health-analytics.svg",
+    isExpanded: false,
   },
 ];

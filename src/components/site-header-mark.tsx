@@ -40,7 +40,7 @@ function ChanhDaiMarkMotion() {
   return (
     <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 256"
+      viewBox="0 0 256 128"
       initial={{
         opacity: 0,
         transform: "translateY(8px)",
@@ -52,7 +52,7 @@ function ChanhDaiMarkMotion() {
       transition={{ duration: 0.3 }}
     >
       <path
-        d="M192 256H64v-64h128v64ZM448 64H320v128h128v64H256V0h192v64ZM64 192H0V64h64v128ZM512 192h-64V64h64v128ZM192 64H64V0h128v64Z"
+        d="M40.75 123H17V4.25H88.25V28H40.75V51.75H88.25V75.5H40.75V123ZM88.25 51.75V28H112V51.75H88.25ZM161.5 123H137.75V4.25H209V28H161.5V51.75H209V75.5H161.5V123ZM232.75 51.75H209V28H232.75V51.75ZM232.75 123H209V75.5H232.75V123Z"
         fill="currentColor"
       />
     </motion.svg>

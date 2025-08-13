@@ -16,18 +16,31 @@ export function Awards() {
       <PanelHeader>
         <PanelTitle>
           Honors & Awards
-          <sup className="ml-1 font-mono text-sm font-medium text-muted-foreground select-none">
-            ({AWARDS.length})
-          </sup>
+          {AWARDS.length > 0 && (
+            <sup className="ml-1 font-mono text-sm font-medium text-muted-foreground select-none">
+              ({AWARDS.length})
+            </sup>
+          )}
         </PanelTitle>
       </PanelHeader>
 
-      <CollapsibleList
-        items={SORTED_AWARDS}
-        max={8}
-        keyExtractor={(item) => item.id}
-        renderItem={(item) => <AwardItem award={item} />}
-      />
+      {AWARDS.length > 0 ? (
+        <CollapsibleList
+          items={SORTED_AWARDS}
+          max={8}
+          keyExtractor={(item) => item.id}
+          renderItem={(item) => <AwardItem award={item} />}
+        />
+      ) : (
+        <div className="py-8 text-center text-muted-foreground">
+          <p className="text-sm">
+            Awards and achievements will be displayed here.
+          </p>
+          <p className="mt-1 text-xs">
+            Academic and professional recognitions coming soon!
+          </p>
+        </div>
+      )}
     </Panel>
   );
 }

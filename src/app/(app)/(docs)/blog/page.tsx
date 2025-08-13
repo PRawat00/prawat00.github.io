@@ -30,20 +30,36 @@ export default function Page() {
           <div className="border-l border-edge"></div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {allPosts
-            .slice()
-            .sort((a, b) =>
-              dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
-            )
-            .map((post, index) => (
-              <PostItem
-                key={post.slug}
-                post={post}
-                shouldPreloadImage={index <= 4}
-              />
-            ))}
-        </div>
+        {allPosts.length > 0 ? (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {allPosts
+              .slice()
+              .sort((a, b) =>
+                dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
+              )
+              .map((post, index) => (
+                <PostItem
+                  key={post.slug}
+                  post={post}
+                  shouldPreloadImage={index <= 4}
+                />
+              ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-16 text-center">
+            <div className="max-w-md">
+              <h2 className="mb-2 text-xl font-semibold">No Posts Yet</h2>
+              <p className="mb-4 text-sm text-muted-foreground">
+                Blog posts will appear here when they&apos;re published. Check
+                back soon for insights on data science, AI systems, and
+                technical tutorials.
+              </p>
+              <div className="font-mono text-xs text-muted-foreground">
+                Coming soon: RAG Systems, Financial AI, ML in Production
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="h-4" />

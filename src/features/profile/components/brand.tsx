@@ -16,10 +16,6 @@ const BrandContextMenu = dynamic(() =>
 export function Brand() {
   return (
     <Panel>
-      <PanelHeader>
-        <PanelTitle>Brand</PanelTitle>
-      </PanelHeader>
-
       <BrandContextMenu>
         <div
           className={cn(
@@ -51,15 +47,6 @@ export function Brand() {
           </div>
         </div>
       </BrandContextMenu>
-
-      <div className="flex h-12 items-center justify-center pb-px">
-        <Button variant="default" asChild>
-          <Link href="/blog/chanhdai-brand">
-            ChanhDai Brand
-            <ArrowRightIcon />
-          </Link>
-        </Button>
-      </div>
     </Panel>
   );
 }

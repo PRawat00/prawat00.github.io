@@ -2,60 +2,53 @@ export const USER = {
   firstName: "Priyanshu",
   lastName: "Rawat",
   displayName: "Priyanshu Rawat",
-  username: "PRawat",
+  username: "prwt",
   gender: "male",
   pronouns: "he/him",
-  bio: "Data",
+  bio: "Data Scientist specializing in RAG systems, agentic AI, and financial document processing",
   flipSentences: [
-    "Creating with code. Small details matter.",
-    "Design Engineer",
-    "Open Source Contributor",
+    "Building production RAG systems for financial AI",
+    "Architecting agentic AI solutions for enterprise",
+    "Specializing in ML research and computer vision",
+    "Developing HPC-integrated AI chatbots",
+    "Creating scalable document processing pipelines",
   ],
-  address: "New York",
-  phoneNumber: "KzEgNTg1IDIzMCAyMDI2", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  email: "cHJ3dDE1MDdAZ21haWwuY29t", // base64 encoded
+  address: "Rochester, NY",
+  phoneNumber: "KzEgKDU4NSktMjMwLTIwMjY=", // E.164 format, base64 encoded
+  email: "cHJhd2F0M0B1ci5yb2NoZXN0ZXIuZWR1", // base64 encoded
   website: "prwt.dev",
   otherWebsites: [
-    "https://dai.ng",
-    "https://dai.so",
-    "https://d.io.vn",
-    "https://d.id.vn",
-    "https://dai.io.vn",
-    "https://dai.id.vn",
-    "https://chanhdai.io.vn",
-    "https://chanhdai.id.vn",
-    "https://ncdai.vn",
-    "https://ncdai.net",
-    "https://dai.is-a.dev",
+    "https://linkedin.com/in/prwt",
+    "https://github.com/prwt",
+    "https://twitter.com/prwt_dev",
+    "https://medium.com/@prwt",
   ],
-  jobTitle: "Data Scientist",
+  jobTitle: "Data Scientist & AI Engineer",
   jobs: [
     {
-      title: "Senior Frontend Developer & UI Design Lead",
-      company: "Simplamo",
-      website: "https://simplamo.com?ref=IN-926722",
+      title: "Data Scientist",
+      company: "FLX AI",
+      website: "https://flxai.com",
     },
     {
-      title: "Founder",
-      company: "Quaric",
-      website: "https://quaric.com",
+      title: "Data Scientist",
+      company: "Center for Integrated Research Computing, UoR",
+      website: "https://rochester.edu/it/circ",
     },
   ],
   about: `
-Hello, World! I am Chánh Đại — a Design Engineer passionate about creating high-performance, user-centric software solutions with intuitive and engaging designs.
+Data Scientist and AI Engineer with expertise in building production-grade RAG systems and agentic AI solutions. Currently developing financial document processing systems at FLX AI and HPC-integrated chatbots at University of Rochester's Center for Integrated Research Computing.
 
-With 5+ years of experience, I specialize in building high-quality web and mobile applications using Next.js, React, TypeScript, and modern front-end technologies. Beyond work, I love exploring new technologies and turning ideas into reality through personal projects.
+Background in computer vision research and distributed machine learning with strong foundation in PyTorch, TensorFlow, and cloud technologies. Passionate about creating AI solutions that solve real-world problems in finance, research computing, and enterprise automation.
 
-One of my key projects, [ZaDark](https://zadark.com), enhances the Zalo experience on PC and Web, surpassing 80,000 downloads on [SourceForge](https://sourceforge.net/projects/zadark) and 15,000 active users on the [Chrome Web Store](https://chromewebstore.google.com/detail/llfhpkkeljlgnjgkholeppfnepmjppob) since 2022.
+One of my key projects, [FinRAG3](https://github.com/prwt/finrag3), is a 6-phase agentic AI system that processes SEC filings and fund prospectuses with 95% accuracy, reducing analysis time from hours to 5 minutes. I've also developed [Steam Insights](https://github.com/prwt/steam-insights), a comprehensive gaming market analysis system processing 8M+ data points with ML forecasting.
 
-I'm also the creator of [React Wheel Picker](https://react-wheel-picker.chanhdai.com) — iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support. It has earned 221 stars on [GitHub](https://github.com/ncdai/react-wheel-picker) and was selected for **Vercel Open Source Program** summer 2025 cohort, receiving $3,600 in Vercel platform credits, an OSS Starter Pack, and priority community support to fuel its ongoing development.
-
-Let's connect and collaborate!
+Let's connect and collaborate on cutting-edge AI solutions!
   `,
-  avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.jpeg",
-  ogImage: "https://assets.chanhdai.com/images/screenshot-og-image-dark.png",
-  namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
+  avatar: "/images/avatars/priyanshu-rawat.jpeg",
+  ogImage: "/images/og/placeholder-og.svg",
+  namePronunciationUrl: "/audio/priyanshu-rawat-pronunciation.mp3",
   keywords:
-    "ncdai, nguyenchanhdai, nguyen chanh dai, chanhdai, chanh dai, iamncdai, quaric, zadark, nguyễn chánh đại, chánh đại",
-  dateCreated: "2023-10-20", // YYYY-MM-DD
+    "Priyanshu Rawat, data science, machine learning, RAG systems, agentic AI, financial AI, computer vision, PyTorch, TensorFlow, AWS, vector databases, LangChain, enterprise AI",
+  dateCreated: "2025-01-15", // YYYY-MM-DD
 };
