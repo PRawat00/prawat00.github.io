@@ -1,22 +1,8 @@
-# [chanhdai.com](https://chanhdai.com)
+# Portfolio - Priyanshu Rawat
 
-A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
+A minimal portfolio, component registry, and blog to showcase my work as a Data Scientist and AI Engineer.
 
-Check out the live site: [chanhdai.com](https://chanhdai.com)
-
-<a href="https://frogdr.com/chanhdai.com?via=ncdai&utm_source=chanhdai.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://frogdr.com/chanhdai.com/badge-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://frogdr.com/chanhdai.com/badge-white.svg">
-    <img src="https://frogdr.com/chanhdai.com/badge-white.svg" alt="Monitor your Domain Rating" style="width: auto; height: 40px">
-  </picture>
-</a>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://assets.chanhdai.com/images/screenshot-desktop-dark.webp">
-  <source media="(prefers-color-scheme: light)" srcset="https://assets.chanhdai.com/images/screenshot-desktop-light.webp">
-  <img src="https://assets.chanhdai.com/images/screenshot-desktop-light.webp" alt="Screenshot">
-</picture>
+Check out the live site: [prwt.dev](https://prwt.dev)
 
 ## Overview
 
@@ -67,7 +53,7 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 
 ## Star History
 
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive)](https://starchart.cc/ncdai/chanhdai.com)
+[![Star History](https://starchart.cc/PRawat00/portfolio.svg?variant=adaptive)](https://starchart.cc/PRawat00/portfolio)
 
 ## Acknowledgments
 
@@ -82,8 +68,4 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 - [Fumadocs](https://fumadocs.dev)
 - And many other open-source libraries used in `package.json`
 
-## GitAds Sponsored
 
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
-
-<!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->
