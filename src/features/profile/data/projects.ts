@@ -2,6 +2,30 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "realtime-tweet-sentiment",
+    title: "Real-Time Tweet Sentiment Analysis Pipeline",
+    period: {
+      start: "01.2025",
+      end: "03.2025",
+    },
+    link: "https://github.com/PRawat00",
+    skills: [
+      "Apache Spark Streaming",
+      "Delta Lake",
+      "Hugging Face Transformers",
+      "MLflow",
+      "Databricks",
+      "Grafana",
+      "Data Quality Validation",
+      "Medallion Architecture",
+      "Auto-scaling",
+      "Real-time Processing",
+    ],
+    description: `Comprehensive real-time data pipeline for analyzing tweet sentiment at scale, processing 50K+ tweets per hour through Bronze, Silver, Gold, and Application layers with 99.5% uptime. Deployed MLflow-packaged Hugging Face transformer achieving 92% accuracy with sub-200ms inference latency. Implemented auto-scaling Databricks clusters with optimized partitioning strategies, reducing query response times by 65% and enabling real-time aggregations across 1M+ tweet mentions. Engineered comprehensive monitoring system with Grafana dashboards and automated alerting for sentiment anomalies.`,
+    logo: "/images/projects/realtime-tweet-sentiment.svg",
+    isExpanded: false,
+  },
+  {
     id: "steam-insights",
     title: "Steam Insights (Gaming Market Analysis & Forecasting)",
     period: {
