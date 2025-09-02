@@ -8,7 +8,7 @@ export const PROJECTS: Project[] = [
       start: "08.2024",
       end: "12.2024",
     },
-    link: "https://github.com/PRawat00/steam-insights",
+    link: "https://github.com/PRawat00",
     skills: [
       "Apache Airflow",
       "Databricks Spark",
@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
     period: {
       start: "02.2025",
     },
-    link: "https://github.com/PRawat00/finrag3",
+    link: "https://github.com/PRawat00",
     skills: [
       "LangGraph",
       "LangChain",
@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
     period: {
       start: "02.2025",
     },
-    link: "https://github.com/PRawat00/hpc-chatbot",
+    link: "https://github.com/PRawat00",
     skills: [
       "RAG Systems",
       "Vector Databases",
@@ -69,7 +69,7 @@ export const PROJECTS: Project[] = [
       start: "01.2023",
       end: "03.2023",
     },
-    link: "https://github.com/PRawat00/health-analytics",
+    link: "https://github.com/PRawat00",
     skills: [
       "Django",
       "MongoDB",
