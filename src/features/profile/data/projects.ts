@@ -47,6 +47,9 @@ export const PROJECTS: Project[] = [
     logo: "/images/projects/steam-insights.svg",
     isExpanded: true,
   },
+
+  // Temporarily commented out projects - can be uncommented when needed
+  /*
   {
     id: "finrag3",
     title: "FinRAG3 - Agentic Financial Document AI",
@@ -108,4 +111,5 @@ export const PROJECTS: Project[] = [
     logo: "/images/projects/health-analytics.svg",
     isExpanded: false,
   },
+  */
 ];
