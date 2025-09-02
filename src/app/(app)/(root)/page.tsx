@@ -14,7 +14,7 @@ import { ProfileCover } from "@/features/profile/components/profile-cover";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
 import { Projects } from "@/features/profile/components/projects";
 import { SocialLinks } from "@/features/profile/components/social-links";
-import { TeckStack } from "@/features/profile/components/teck-stack";
+import { TechStack } from "@/features/profile/components/teck-stack";
 import { cn } from "@/lib/utils";
 
 export default function Page() {
@@ -41,7 +41,7 @@ export default function Page() {
         <About />
         <Separator />
 
-        <TeckStack />
+        <TechStack />
         <Separator />
 
         <Blog />

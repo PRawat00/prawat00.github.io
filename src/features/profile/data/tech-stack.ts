@@ -14,13 +14,13 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Language"],
   },
   {
-    key: "cpp",
+    key: "cplusplus",
     title: "C/C++",
     href: "https://isocpp.org",
     categories: ["Language"],
   },
   {
-    key: "sql",
+    key: "mysql",
     title: "SQL",
     href: "https://www.iso.org/standard/63555.html",
     categories: ["Language", "Database"],
@@ -56,13 +56,7 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Framework", "Machine Learning"],
   },
   {
-    key: "pytorch-lightning",
-    title: "PyTorch Lightning",
-    href: "https://pytorch-lightning.readthedocs.io",
-    categories: ["Framework", "Machine Learning"],
-  },
-  {
-    key: "spark",
+    key: "apachespark",
     title: "Apache Spark",
     href: "https://spark.apache.org",
     categories: ["Framework", "Big Data"],
@@ -72,15 +66,11 @@ export const TECH_STACK: TechStack[] = [
     title: "Databricks",
     href: "https://databricks.com",
     categories: ["Platform", "Big Data"],
+    useLocalIcon: true,
+    localIconPath: "Databricks_idF4fnHpaJ_0.svg",
   },
   {
-    key: "tableau",
-    title: "Tableau",
-    href: "https://tableau.com",
-    categories: ["Tools", "Visualization"],
-  },
-  {
-    key: "aws",
+    key: "amazonwebservices",
     title: "AWS",
     href: "https://aws.amazon.com",
     categories: ["Cloud"],
@@ -138,6 +128,8 @@ export const TECH_STACK: TechStack[] = [
     title: "LangChain",
     href: "https://langchain.com",
     categories: ["Framework", "AI"],
+    useLocalIcon: true,
+    localIconPath: "langchain-color.svg",
   },
   {
     key: "fastapi",
@@ -150,5 +142,7 @@ export const TECH_STACK: TechStack[] = [
     title: "ChromaDB",
     href: "https://trychroma.com",
     categories: ["Database", "Vector"],
+    useLocalIcon: true,
+    localIconPath: "chroma-logo-png_seeklogo-482133.png",
   },
 ];

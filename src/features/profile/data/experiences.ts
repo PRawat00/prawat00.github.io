@@ -10,7 +10,8 @@ export const EXPERIENCES: Experience[] = [
         id: "flx-ai-data-scientist",
         title: "Data Scientist",
         employmentPeriod: {
-          start: "02.2025",
+          start: "05.2024",
+          end: "07.2024",
         },
         employmentType: "Full-time",
         icon: "code",
@@ -31,7 +32,7 @@ export const EXPERIENCES: Experience[] = [
         isExpanded: true,
       },
     ],
-    isCurrentEmployer: true,
+    isCurrentEmployer: false,
   },
   {
     id: "uor-circ",
