@@ -9,6 +9,7 @@ import { Brand } from "@/features/profile/components/brand";
 import { Certifications } from "@/features/profile/components/certifications";
 import { Education } from "@/features/profile/components/education";
 import { Experiences } from "@/features/profile/components/experiences";
+import { Featured } from "@/features/profile/components/featured";
 import { Overview } from "@/features/profile/components/overview";
 import { ProfileCover } from "@/features/profile/components/profile-cover";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
@@ -42,6 +43,9 @@ export default function Page() {
         <Separator />
 
         <TechStack />
+        <Separator />
+
+        <Featured />
         <Separator />
 
         <Blog />

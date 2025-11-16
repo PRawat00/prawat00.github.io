@@ -18,6 +18,8 @@ export function CatAccordionSlider({
   itemsPerPage = 4,
 }: CatAccordionSliderProps) {
   const [activeIndex, setActiveIndex] = useState<number>(-1);
+  const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
+  const [isDesktop, setIsDesktop] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">(
     "right"
@@ -38,9 +40,13 @@ export function CatAccordionSlider({
     [cats]
   );
 
+  // Determine which cat should be expanded (hover takes priority on desktop)
+  const effectiveActiveIndex =
+    isDesktop && hoveredIndex !== -1 ? hoveredIndex : activeIndex;
+
   // Show 4 cats when collapsed, 3 cats when any cat is expanded
   const displayCount =
-    activeIndex === -1
+    effectiveActiveIndex === -1
       ? Math.min(cats.length, itemsPerPage)
       : Math.min(cats.length, 3);
 
@@ -60,6 +66,19 @@ export function CatAccordionSlider({
     setSlideDirection("left");
     setStartIndex((prev) => (prev + 1) % cats.length);
   }, [cats.length]);
+
+  // Detect if device supports hover (desktop)
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover)");
+    setIsDesktop(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDesktop(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -123,7 +142,7 @@ export function CatAccordionSlider({
               animate={{
                 x: 0,
                 opacity: 1,
-                flex: activeIndex === index ? 4 : 1,
+                flex: effectiveActiveIndex === index ? 4 : 1,
               }}
               exit={{
                 x: slideDirection === "left" ? "-100%" : "100%",
@@ -135,8 +154,11 @@ export function CatAccordionSlider({
                 flex: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
               }}
               style={{
-                willChange: activeIndex === index ? "transform, flex" : "auto",
+                willChange:
+                  effectiveActiveIndex === index ? "transform, flex" : "auto",
               }}
+              onMouseEnter={() => isDesktop && setHoveredIndex(index)}
+              onMouseLeave={() => isDesktop && setHoveredIndex(-1)}
               onClick={() => handleSlideClick(index)}
             >
               {/* Background Image */}
@@ -144,11 +166,14 @@ export function CatAccordionSlider({
                 className="absolute inset-0"
                 animate={{
                   filter:
-                    activeIndex === index ? "grayscale(0)" : "grayscale(1)",
+                    effectiveActiveIndex === index
+                      ? "grayscale(0)"
+                      : "grayscale(1)",
                 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  willChange: activeIndex === index ? "filter" : "auto",
+                  willChange:
+                    effectiveActiveIndex === index ? "filter" : "auto",
                 }}
               >
                 <Image
@@ -167,20 +192,22 @@ export function CatAccordionSlider({
                 <m.div
                   className="mb-4 origin-left text-4xl font-light text-white/60 md:text-6xl"
                   animate={{
-                    scale: activeIndex === index ? 0.75 : 1,
-                    opacity: activeIndex === index ? 0.6 : 0.4,
+                    scale: effectiveActiveIndex === index ? 0.75 : 1,
+                    opacity: effectiveActiveIndex === index ? 0.6 : 0.4,
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
                     willChange:
-                      activeIndex === index ? "transform, opacity" : "auto",
+                      effectiveActiveIndex === index
+                        ? "transform, opacity"
+                        : "auto",
                   }}
                 >
                   {cat.number}
                 </m.div>
 
                 {/* Brand/Nickname - Only show when collapsed */}
-                {activeIndex !== index && (
+                {effectiveActiveIndex !== index && (
                   <m.div
                     className="absolute bottom-[60px] left-[20px] mb-2 origin-left text-sm font-semibold text-white/90 md:bottom-[100px] md:left-[30px] md:text-base"
                     animate={{
@@ -198,7 +225,7 @@ export function CatAccordionSlider({
 
                 {/* Expanded Content */}
                 <AnimatePresence>
-                  {activeIndex === index && (
+                  {effectiveActiveIndex === index && (
                     <m.div
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
