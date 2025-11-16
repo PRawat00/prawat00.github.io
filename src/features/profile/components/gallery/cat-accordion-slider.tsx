@@ -44,11 +44,8 @@ export function CatAccordionSlider({
   const effectiveActiveIndex =
     isDesktop && hoveredIndex !== -1 ? hoveredIndex : activeIndex;
 
-  // Show 4 cats when collapsed, 3 cats when clicked/locked (not on hover)
-  const displayCount =
-    activeIndex === -1
-      ? Math.min(cats.length, itemsPerPage)
-      : Math.min(cats.length, 3);
+  // Always show the configured number of cats
+  const displayCount = Math.min(cats.length, itemsPerPage);
 
   const currentCats = getVisibleCats(startIndex, displayCount);
   const canNavigate = cats.length > itemsPerPage;

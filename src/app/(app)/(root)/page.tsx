@@ -6,7 +6,6 @@ import { About } from "@/features/profile/components/about";
 import { Awards } from "@/features/profile/components/awards";
 import { Blog } from "@/features/profile/components/blog";
 import { Brand } from "@/features/profile/components/brand";
-import { Certifications } from "@/features/profile/components/certifications";
 import { Education } from "@/features/profile/components/education";
 import { Experiences } from "@/features/profile/components/experiences";
 import { Featured } from "@/features/profile/components/featured";
@@ -61,9 +60,6 @@ export default function Page() {
         <Separator />
 
         <Awards />
-        <Separator />
-
-        <Certifications />
         <Separator />
 
         <Brand />
