@@ -38,7 +38,12 @@ export function CatAccordionSlider({
     [cats]
   );
 
-  const displayCount = Math.min(cats.length, itemsPerPage);
+  // Show 4 cats when collapsed, 3 cats when any cat is expanded
+  const displayCount =
+    activeIndex === -1
+      ? Math.min(cats.length, itemsPerPage)
+      : Math.min(cats.length, 3);
+
   const currentCats = getVisibleCats(startIndex, displayCount);
   const canNavigate = cats.length > itemsPerPage;
 
@@ -118,7 +123,7 @@ export function CatAccordionSlider({
               animate={{
                 x: 0,
                 opacity: 1,
-                flex: activeIndex === index ? 2.5 : 1,
+                flex: activeIndex === index ? 4 : 1,
               }}
               exit={{
                 x: slideDirection === "left" ? "-100%" : "100%",
