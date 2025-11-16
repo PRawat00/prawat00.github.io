@@ -6,7 +6,7 @@ export const featuredItems: FeaturedItem[] = [
     title: "Cats in my Heart",
     description: "Meet the wonderful cats that have touched my life",
     image: "/images/gallery/cats/Template.png",
-    href: "/gallery",
+    href: "/cats",
   },
   {
     id: "cyberintel",

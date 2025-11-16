@@ -29,7 +29,7 @@ export const MAIN_NAV: NavItem[] = [
   },
   {
     title: "Cats",
-    href: "/gallery",
+    href: "/cats",
   },
 ];
 
