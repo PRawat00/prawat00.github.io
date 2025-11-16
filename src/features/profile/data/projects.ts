@@ -5,7 +5,7 @@ export const PROJECTS: Project[] = [
     id: "cyberintel-summarizer",
     title: "CyberIntel Summarizer: Real-Time Threat Intelligence System",
     period: {
-      start: "01.2025",
+      start: "09.2024",
     },
     link: "https://github.com/PRawat00",
     demoLink: "https://cyber-intel-azure.vercel.app/",
