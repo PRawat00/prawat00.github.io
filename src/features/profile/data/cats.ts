@@ -10,7 +10,7 @@ export const catGalleryData: CatGalleryData = {
       subtitle: "Professional Athlete & 3 AM Sprint Champion",
       image: "/images/gallery/cats/M.jpeg",
       specs: [
-        { label: "Profession", value: "Olympic Sprinter" },
+        { label: "Profession", value: "CAR" },
         { label: "Temperament", value: "Hyperactive & Playful" },
       ],
       badges: [
