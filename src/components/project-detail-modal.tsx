@@ -56,10 +56,10 @@ export function ProjectDetailModal({
               width={1200}
               height={630}
               quality={100}
-              className="aspect-[1200/630] w-full rounded-t-2xl object-cover"
+              className="aspect-[1200/630] w-full rounded-xl object-cover"
               unoptimized
             />
-            <div className="pointer-events-none absolute inset-0 rounded-t-2xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
           </div>
         )}
 

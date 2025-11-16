@@ -26,6 +26,8 @@ export function CatAccordionSlider({
   );
   const [touchStart, setTouchStart] = useState<number>(0);
   const [touchEnd, setTouchEnd] = useState<number>(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [hasSwiped, setHasSwiped] = useState(false);
 
   // Helper function to get visible cats with circular wrapping
   const getVisibleCats = useCallback(
@@ -52,6 +54,7 @@ export function CatAccordionSlider({
 
   const handleSlideClick = (index: number) => {
     setActiveIndex(activeIndex === index ? -1 : index);
+    setHasInteracted(true);
   };
 
   const handlePrevious = useCallback(() => {
@@ -105,6 +108,7 @@ export function CatAccordionSlider({
     const minSwipeDistance = 50;
 
     if (Math.abs(distance) > minSwipeDistance) {
+      setHasSwiped(true);
       if (distance > 0) {
         // Swiped left - go to next
         handleNext();
@@ -182,6 +186,23 @@ export function CatAccordionSlider({
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
               </m.div>
+
+              {/* Click/Tap Indicator - Only show before first interaction */}
+              <AnimatePresence>
+                {!hasInteracted && effectiveActiveIndex !== index && (
+                  <m.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
+                  >
+                    <div className="rounded-lg bg-black/50 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+                      {isDesktop ? "Click to expand" : "Tap to expand"}
+                    </div>
+                  </m.div>
+                )}
+              </AnimatePresence>
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-4 text-white md:p-6 lg:p-8">
@@ -307,6 +328,37 @@ export function CatAccordionSlider({
           </button>
         </>
       )}
+
+      {/* Swipe Indicators - Only on mobile, only before first swipe */}
+      <AnimatePresence>
+        {!hasSwiped && !isDesktop && canNavigate && (
+          <>
+            <m.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+              className="pointer-events-none absolute top-1/2 left-2 z-20 flex -translate-y-1/2 items-center gap-2 md:hidden"
+            >
+              <div className="rounded-full bg-black/50 p-2 backdrop-blur-sm">
+                <ChevronLeft className="size-6 text-white" />
+              </div>
+            </m.div>
+
+            <m.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+              className="pointer-events-none absolute top-1/2 right-2 z-20 flex -translate-y-1/2 items-center gap-2 md:hidden"
+            >
+              <div className="rounded-full bg-black/50 p-2 backdrop-blur-sm">
+                <ChevronRight className="size-6 text-white" />
+              </div>
+            </m.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

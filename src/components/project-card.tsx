@@ -29,7 +29,7 @@ export function ProjectCard({
     >
       {/* Project Image */}
       {project.image && (
-        <div className="relative select-none">
+        <div className="relative select-none [&_img]:rounded-xl">
           <Image
             src={project.image}
             alt={project.title}
@@ -39,7 +39,7 @@ export function ProjectCard({
             className="aspect-[1200/630] w-full object-cover"
             unoptimized
           />
-          <div className="pointer-events-none absolute inset-0 ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+          <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
         </div>
       )}
 
