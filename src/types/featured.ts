@@ -3,6 +3,7 @@ export type FeaturedItem = {
   title: string;
   description: string;
   image: string;
-  href: string;
+  href?: string;
+  projectId?: string;
   new?: boolean;
 };

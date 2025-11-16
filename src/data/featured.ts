@@ -8,4 +8,13 @@ export const featuredItems: FeaturedItem[] = [
     image: "/images/gallery/cats/Template.png",
     href: "/gallery",
   },
+  {
+    id: "cyberintel",
+    title: "CyberIntel Summarizer",
+    description:
+      "Real-time threat intelligence system with fine-tuned LLMs analyzing 100+ daily CVE updates",
+    image: "/r/CyberIntel__.gif",
+    projectId: "cyberintel-summarizer",
+    new: true,
+  },
 ];

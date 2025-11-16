@@ -1,11 +1,18 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 import { FeaturedCard } from "@/components/featured-card";
+import { ProjectDetailModal } from "@/components/project-detail-modal";
 import { featuredItems } from "@/data/featured";
+import { PROJECTS } from "@/features/profile/data/projects";
+import type { Project } from "@/features/profile/types/projects";
 
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 export function Featured() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <Panel id="featured">
       <PanelHeader>
@@ -25,10 +32,28 @@ export function Featured() {
               key={item.id}
               item={item}
               shouldPreloadImage={index < 2}
+              onClick={
+                item.projectId
+                  ? () => {
+                      const project = PROJECTS.find(
+                        (p) => p.id === item.projectId
+                      );
+                      if (project) {
+                        setSelectedProject(project);
+                      }
+                    }
+                  : undefined
+              }
             />
           ))}
         </div>
       </div>
+
+      <ProjectDetailModal
+        project={selectedProject}
+        open={!!selectedProject}
+        onOpenChange={(open) => !open && setSelectedProject(null)}
+      />
     </Panel>
   );
 }

@@ -6,8 +6,11 @@ export type Project = {
     end?: string;
   };
   link: string;
+  demoLink?: string;
   skills: string[];
   description?: string;
+  summary?: string;
   logo?: string;
+  image?: string;
   isExpanded?: boolean;
 };

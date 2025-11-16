@@ -8,20 +8,21 @@ import type { FeaturedItem } from "@/types/featured";
 export function FeaturedCard({
   item,
   shouldPreloadImage,
+  onClick,
 }: {
   item: FeaturedItem;
   shouldPreloadImage?: boolean;
+  onClick?: () => void;
 }) {
-  return (
-    <Link
-      href={item.href}
-      className={cn(
-        "group/featured flex flex-col gap-2 p-2",
-        "max-sm:screen-line-before max-sm:screen-line-after",
-        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after",
-        "lg:nth-[3n+1]:screen-line-before lg:nth-[3n+1]:screen-line-after"
-      )}
-    >
+  const className = cn(
+    "group/featured flex flex-col gap-2 p-2",
+    "max-sm:screen-line-before max-sm:screen-line-after",
+    "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after",
+    "lg:nth-[3n+1]:screen-line-before lg:nth-[3n+1]:screen-line-after"
+  );
+
+  const content = (
+    <>
       <div className="relative select-none [&_img]:aspect-1200/630 [&_img]:rounded-xl [&_img]:object-cover">
         <Image
           src={item.image}
@@ -49,6 +50,27 @@ export function FeaturedCard({
 
         <p className="text-sm text-muted-foreground">{item.description}</p>
       </div>
-    </Link>
+    </>
   );
+
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        className={cn(className, "cursor-pointer text-left")}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  if (item.href) {
+    return (
+      <Link href={item.href} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  return <div className={className}>{content}</div>;
 }

@@ -1,10 +1,17 @@
-import { CollapsibleList } from "@/components/collapsible-list";
+"use client";
+
+import { useState } from "react";
+
+import { ProjectCard } from "@/components/project-card";
+import { ProjectDetailModal } from "@/components/project-detail-modal";
 
 import { PROJECTS } from "../../data/projects";
+import type { Project } from "../../types/projects";
 import { Panel, PanelHeader, PanelTitle } from "../panel";
-import { ProjectItem } from "./project-item";
 
 export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <Panel id="projects">
       <PanelHeader>
@@ -16,10 +23,20 @@ export function Projects() {
         </PanelTitle>
       </PanelHeader>
 
-      <CollapsibleList
-        items={PROJECTS}
-        max={4}
-        renderItem={(item) => <ProjectItem project={item} />}
+      <div className="grid grid-cols-1 gap-6 p-4 lg:grid-cols-2">
+        {PROJECTS.map((project) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            onClick={() => setSelectedProject(project)}
+          />
+        ))}
+      </div>
+
+      <ProjectDetailModal
+        project={selectedProject}
+        open={!!selectedProject}
+        onOpenChange={(open) => !open && setSelectedProject(null)}
       />
     </Panel>
   );

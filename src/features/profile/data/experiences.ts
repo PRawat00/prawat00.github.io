@@ -7,27 +7,27 @@ export const EXPERIENCES: Experience[] = [
     companyLogo: "/images/companies/flx-ai.png",
     positions: [
       {
-        id: "flx-ai-data-scientist",
-        title: "Data Scientist",
+        id: "flx-ai-data-science-intern",
+        title: "Data Science Intern",
         employmentPeriod: {
-          start: "05.2024",
-          end: "07.2024",
+          start: "06.2025",
+          end: "07.2025",
         },
-        employmentType: "Full-time",
+        employmentType: "Internship",
         icon: "code",
-        description: `- Architected FinRAG3, a 6-phase agentic AI system using LangGraph orchestration for automated investment due diligence, processing SEC filings (10-K, 10-Q) and fund prospectuses with custom parsing algorithms achieving 95% accuracy in regulatory data extraction and reducing analysis time from hours to 5 minutes
-- Developed domain-specific parsers for complex financial documents including SEC reports, fund prospectuses, and regulatory filings, implementing intelligent chunking strategies for risk factors, MD&A sections, and fee tables while achieving 5-10x processing speed improvements
-- Built production RAG infrastructure handling 500+ page financial documents with multi-GPU optimization, ChromaDB vector storage, and comprehensive A/B testing framework, achieving >90% accuracy on investment questionnaire automation
-- Deployed enterprise-grade MLOps pipeline using Docker, Kubernetes, and Flask-based monitoring dashboard, achieving 95% system reliability improvement while enabling real-time financial document analysis`,
+        description: `- Cut financial analysis time from days to hours by engineering an autonomous agent that synthesizes 500+ pages of SEC filings (10-K, 8-K) to generate instant answers
+- Engineered an OCR pipeline (90% accuracy on financial tables) using Docling that implemented section-based chunking while preserving and linking citation metadata to enable precise source attribution
+- Engineered a RAG pipeline (FastAPI/pgvector) with a ColBERT v2 re-ranker, cutting latency by 75% by implementing the PLAID search engine and dynamic batching`,
         skills: [
-          "LangChain",
+          "LangGraph",
           "FastAPI",
           "ColBERT v2",
           "PostgreSQL",
+          "pgvector",
           "Docker",
-          "GPU Computing",
-          "ChromaDB",
-          "LangGraph",
+          "Docling",
+          "OCR",
+          "PLAID",
         ],
         isExpanded: true,
       },
@@ -47,15 +47,18 @@ export const EXPERIENCES: Experience[] = [
         },
         employmentType: "Part-time",
         icon: "education",
-        description: `- Developing RAG-based chatbot for HPC documentation to automate user query resolution and reduce onboarding complexity for researchers
-- Building agentic AI systems for dynamic data scraping and vector database management for HPC queries
-- Creating automated user onboarding system and error troubleshooting automation for university HPC clusters`,
+        description: `- Engineered ML-powered support ticket intelligence system analyzing 200K+ tickets with automated triage across system administrators, computational scientists, and management, reducing manual workload by 60%
+- Built production-grade multimodal RAG system integrating SQL databases, documentation and real-time cluster data using LangGraph, FastAPI, and Docker, serving 1000+ users for job scheduling, resource optimization, and troubleshooting
+- Deployed comprehensive CI/CD and MLOps infrastructure for RAG chatbot with automated testing, model deployment, performance monitoring, and version control, achieving 99.5% uptime while supporting continuous feature releases and model updates`,
         skills: [
-          "LangChain",
+          "LangGraph",
           "FastAPI",
           "Docker",
           "RAG Systems",
           "Vector Databases",
+          "SQL",
+          "CI/CD",
+          "MLOps",
           "HPC Systems",
           "Agentic AI",
         ],
@@ -63,37 +66,6 @@ export const EXPERIENCES: Experience[] = [
       },
     ],
     isCurrentEmployer: true,
-  },
-  {
-    id: "k-labs",
-    companyName: "K-Labs: Continual Learning Lab, University of Rochester",
-    companyLogo: "/images/companies/k-labs.svg",
-    positions: [
-      {
-        id: "k-labs-ml-research",
-        title: "ML Research Assistant",
-        employmentPeriod: {
-          start: "09.2024",
-          end: "01.2025",
-        },
-        employmentType: "Part-time",
-        icon: "idea",
-        description: `- Developed cross-modal object recognition system using Vision Transformers and CNNs for continual learning research
-- Implemented distributed training pipeline with PyTorch DDP and Automatic Mixed Precision, achieving 50% reduction in training time
-- Conducted statistical analysis of neural network activations to improve model interpretability and understanding of shape-based visual features`,
-        skills: [
-          "PyTorch",
-          "Vision Transformers",
-          "CNN",
-          "Distributed Training",
-          "Mixed Precision",
-          "Computer Vision",
-          "Statistical Analysis",
-        ],
-        isExpanded: false,
-      },
-    ],
-    isCurrentEmployer: false,
   },
   {
     id: "greene-career",
