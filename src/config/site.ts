@@ -28,7 +28,7 @@ export const MAIN_NAV: NavItem[] = [
     href: "/projects",
   },
   {
-    title: "Gallery",
+    title: "Cats",
     href: "/gallery",
   },
 ];

@@ -28,8 +28,15 @@ export default function GalleryPage() {
       </div>
 
       <div className="mt-8 text-center text-sm text-muted-foreground">
-        <p>Click on any cat to learn more about them</p>
-        <p className="mt-1">Use arrow keys or navigation buttons to explore</p>
+        {/* Mobile instructions */}
+        <p className="md:hidden">Tap on any cat to learn more</p>
+        <p className="mt-1 md:hidden">Swipe left or right to explore</p>
+
+        {/* Desktop instructions */}
+        <p className="hidden md:block">Click on any cat to learn more</p>
+        <p className="mt-1 hidden md:block">
+          Use arrow keys or navigation buttons to explore
+        </p>
       </div>
     </div>
   );
