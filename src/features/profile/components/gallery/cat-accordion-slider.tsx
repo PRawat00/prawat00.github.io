@@ -61,15 +61,15 @@ export function CatAccordionSlider({
     // Auto-scroll when clicking the last visible cat
     if (index === displayCount - 1 && canNavigate) {
       setSlideDirection("left");
+      // Slide by 1 on both mobile and desktop
+      setStartIndex((prev) => (prev + 1) % cats.length);
 
       if (!isDesktop) {
-        // Mobile: slide by 2 to center the clicked cat with 3 visible
-        setStartIndex((prev) => (prev + 2) % cats.length);
-        setActiveIndex(1); // Middle position
+        // Mobile: clicked cat moves to last position of 3 visible
+        setActiveIndex(2);
       } else {
-        // Desktop: slide by 1 with 4 visible
-        setStartIndex((prev) => (prev + 1) % cats.length);
-        setActiveIndex(2); // Second-to-last position
+        // Desktop: clicked cat moves to second-to-last position of 4 visible
+        setActiveIndex(2);
       }
     } else {
       // Normal toggle behavior for other cats
