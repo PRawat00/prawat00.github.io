@@ -46,15 +46,35 @@ export function CatAccordionSlider({
   const effectiveActiveIndex =
     isDesktop && hoveredIndex !== -1 ? hoveredIndex : activeIndex;
 
-  // Always show the configured number of cats
-  const displayCount = Math.min(cats.length, itemsPerPage);
+  // Show 3 cats on mobile when expanded (1 active + 2 others), 4 cats otherwise
+  const displayCount =
+    !isDesktop && activeIndex !== -1
+      ? Math.min(cats.length, 3)
+      : Math.min(cats.length, itemsPerPage);
 
   const currentCats = getVisibleCats(startIndex, displayCount);
   const canNavigate = cats.length > itemsPerPage;
 
   const handleSlideClick = (index: number) => {
-    setActiveIndex(activeIndex === index ? -1 : index);
     setHasInteracted(true);
+
+    // Auto-scroll when clicking the last visible cat
+    if (index === displayCount - 1 && canNavigate) {
+      setSlideDirection("left");
+
+      if (!isDesktop) {
+        // Mobile: slide by 2 to center the clicked cat with 3 visible
+        setStartIndex((prev) => (prev + 2) % cats.length);
+        setActiveIndex(1); // Middle position
+      } else {
+        // Desktop: slide by 1 with 4 visible
+        setStartIndex((prev) => (prev + 1) % cats.length);
+        setActiveIndex(2); // Second-to-last position
+      }
+    } else {
+      // Normal toggle behavior for other cats
+      setActiveIndex(activeIndex === index ? -1 : index);
+    }
   };
 
   const handlePrevious = useCallback(() => {
