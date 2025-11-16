@@ -5,7 +5,7 @@ export const catGalleryData: CatGalleryData = {
     {
       id: "midnight-zoomies",
       number: "01",
-      name: "Midnight Zoomies",
+      name: "Nova",
       nickname: "Zooms",
       subtitle: "Professional Athlete & 3 AM Sprint Champion",
       image: "/images/gallery/cats/M.jpeg",
@@ -78,10 +78,11 @@ export const catGalleryData: CatGalleryData = {
       subtitle: "Professional Chef & Chaos Coordinator",
       image: "/images/gallery/cats/gd.jpeg",
       specs: [
-        { label: "Profession", value: "Executive Chef" },
+        { label: "Profession", value: "Eats planets for fun" },
         { label: "Temperament", value: "Mischievous & Loving" },
       ],
       badges: [
+        { text: "Sneaked into Earth for vacation" },
         { text: "Knocks things off tables" },
         { text: "Purrs at 85 dB" },
         { text: "Naps: 16 hrs/day" },
