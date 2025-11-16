@@ -27,6 +27,10 @@ export const MAIN_NAV: NavItem[] = [
     title: "Projects",
     href: "/projects",
   },
+  {
+    title: "Gallery",
+    href: "/gallery",
+  },
 ];
 
 export const SOURCE_CODE_GITHUB_REPO = "PRawat00/portfolio";
