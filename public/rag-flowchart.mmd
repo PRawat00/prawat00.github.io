@@ -1,0 +1,35 @@
+flowchart LR
+    subgraph Input["Input"]
+        A["User Query"]
+    end
+
+    subgraph Retrieval["Retrieval Pipeline"]
+        B["Embedding Model"]
+        C[("Vector Database")]
+        D["Retrieved Documents"]
+    end
+
+    subgraph Generation["Generation"]
+        E["Context + Query"]
+        F["LLM"]
+    end
+
+    subgraph Output["Output"]
+        G["Response"]
+    end
+
+    A --> B
+    B -->|"vector search"| C
+    C -->|"top-k results"| D
+    D --> E
+    A -->|"original query"| E
+    E -->|"prompt"| F
+    F --> G
+
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style D fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style F fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    style G fill:#e0f7fa,stroke:#00838f,stroke-width:2px
