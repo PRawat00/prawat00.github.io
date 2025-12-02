@@ -7,6 +7,10 @@ const ScrollTop = dynamic(() =>
   import("@/components/scroll-top").then((mod) => mod.ScrollTop)
 );
 
+const Chatbot = dynamic(() =>
+  import("@/components/chatbot").then((mod) => mod.Chatbot)
+);
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -14,6 +18,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main className="max-w-screen overflow-x-hidden px-2">{children}</main>
       <SiteFooter />
       <ScrollTop />
+      <Chatbot />
     </>
   );
 }
