@@ -1,4 +1,14 @@
-import { GlobeIcon, MapPinIcon, MarsIcon, VenusIcon } from "lucide-react";
+"use client";
+
+import {
+  Download,
+  GlobeIcon,
+  Mail,
+  MapPinIcon,
+  MarsIcon,
+  VenusIcon,
+} from "lucide-react";
+import { useState } from "react";
 
 import { USER } from "@/data/user";
 import { urlToName } from "@/utils/url";
@@ -7,9 +17,11 @@ import { Panel, PanelContent } from "../panel";
 import { EmailItem } from "./email-item";
 import { IntroItem } from "./intro-item";
 import { JobItem } from "./job-item";
-import { PhoneItem } from "./phone-item";
+import { ResumePreviewModal } from "./resume-preview-modal";
 
 export function Overview() {
+  const [resumeModalOpen, setResumeModalOpen] = useState(false);
+
   return (
     <Panel>
       <h2 className="sr-only">Overview</h2>
@@ -28,8 +40,6 @@ export function Overview() {
 
         <IntroItem icon={MapPinIcon} content={USER.address} />
 
-        <PhoneItem phoneNumber={USER.phoneNumber} />
-
         <EmailItem email={USER.email} />
 
         <IntroItem
@@ -42,7 +52,30 @@ export function Overview() {
           icon={USER.gender === "male" ? MarsIcon : VenusIcon}
           content={USER.pronouns}
         />
+
+        {/* Action Items */}
+        <div className="mt-4 flex flex-wrap gap-2 border-t border-edge pt-4">
+          <button
+            onClick={() => setResumeModalOpen(true)}
+            className="flex items-center gap-2 rounded-lg border border-edge bg-muted px-3 py-1.5 font-mono text-sm transition-colors hover:bg-muted/80"
+          >
+            <Download className="size-4 text-muted-foreground" />
+            <span>Resume</span>
+          </button>
+          <a
+            href={`mailto:${atob(USER.email)}`}
+            className="flex items-center gap-2 rounded-lg border border-edge bg-muted px-3 py-1.5 font-mono text-sm transition-colors hover:bg-muted/80"
+          >
+            <Mail className="size-4 text-muted-foreground" />
+            <span>Get In Touch</span>
+          </a>
+        </div>
       </PanelContent>
+
+      <ResumePreviewModal
+        open={resumeModalOpen}
+        onOpenChange={setResumeModalOpen}
+      />
     </Panel>
   );
 }

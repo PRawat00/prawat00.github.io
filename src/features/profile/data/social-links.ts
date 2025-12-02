@@ -13,4 +13,17 @@ export const SOCIAL_LINKS: SocialLink[] = [
     description: "PRawat00",
     href: "https://github.com/PRawat00",
   },
+  // Disabled until profiles are active:
+  // {
+  //   icon: "/images/icons/x.svg",
+  //   title: "X (Twitter)",
+  //   description: "@prwt_dev",
+  //   href: "https://twitter.com/prwt_dev",
+  // },
+  // {
+  //   icon: "/images/icons/medium.svg",
+  //   title: "Medium",
+  //   description: "@prwt",
+  //   href: "https://medium.com/@prwt",
+  // },
 ];

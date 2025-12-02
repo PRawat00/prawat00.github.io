@@ -7,6 +7,7 @@ export type TechStack = {
   useSimpleIcon?: boolean; // If `true`, use Simple Icons CDN instead of DevIcon
   useLocalIcon?: boolean; // If `true`, use local SVG file from public directory
   localIconPath?: string; // Path to local icon file (when useLocalIcon is true)
+  invertInDarkMode?: boolean; // If `true`, apply CSS invert filter in dark mode
   // Icon paths:
   // - DevIcon: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/[key]/[key]-original.svg
   // - Simple Icons: https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/[key].svg
