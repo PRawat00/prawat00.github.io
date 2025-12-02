@@ -51,7 +51,6 @@ export async function POST(request: Request) {
       system: SYSTEM_PROMPT,
       messages,
       temperature: 0.7,
-      maxTokens: 500,
     });
 
     return result.toTextStreamResponse();
