@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   transpilePackages: ["next-mdx-remote"],
   allowedDevOrigins: ["chanhdai-macbook.local"],
   devIndicators: false,
+  cacheMaxMemorySize: 52428800, // 50MB cache limit
   images: {
     remotePatterns: [
       {
