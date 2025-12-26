@@ -124,5 +124,41 @@ export const catGalleryData: CatGalleryData = {
         { text: "9 lives × divine power" },
       ],
     },
+    {
+      id: "kaida-butterscotch",
+      number: "08",
+      name: "Kaida Butterscotch",
+      nickname: "Butter",
+      subtitle: "CEO of Disapproval & HR Violations",
+      image: "/images/gallery/cats/sassy.jpeg",
+      specs: [
+        { label: "Profession", value: "Chief Judging Officer" },
+        { label: "Temperament", value: "Fierce & Fabulous" },
+      ],
+      badges: [
+        { text: "Little dragon, big attitude" },
+        { text: "Corner office: cat tree penthouse" },
+        { text: "Your performance review: pending" },
+        { text: "Sweet name, spicy personality" },
+      ],
+    },
+    {
+      id: "eclipse-twins",
+      number: "09",
+      name: "The Eclipse Twins",
+      nickname: "Solar & Luna",
+      subtitle: "Professional Bed Occupiers & Part-Time Philosophers",
+      image: "/images/gallery/cats/alba and mia.jpeg",
+      specs: [
+        { label: "Profession", value: "Co-CEOs of the Bed" },
+        { label: "Temperament", value: "Chaotic Neutral (balanced)" },
+      ],
+      badges: [
+        { text: "Share one brain cell (on alternating days)" },
+        { text: "Solar: day shift. Luna: night shift" },
+        { text: "Bed occupancy rate: 100%" },
+        { text: "Together they form: a bigger problem" },
+      ],
+    },
   ],
 };

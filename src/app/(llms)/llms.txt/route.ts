@@ -3,7 +3,7 @@ import { getAllPosts } from "@/data/blog";
 
 const allPosts = getAllPosts();
 
-const content = `# chanhdai.com
+const content = `# prwt.dev
 
 > A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
 

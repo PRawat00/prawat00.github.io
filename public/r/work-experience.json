@@ -3,7 +3,7 @@
   "name": "work-experience",
   "type": "registry:component",
   "title": "Work Experience",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "prwt <prwt1507@gmail.com>",
   "description": "Displays a list of work experiences with role details and durations.",
   "dependencies": [
     "react-markdown",
@@ -13,7 +13,7 @@
     "@tailwindcss/typography"
   ],
   "registryDependencies": [
-    "https://chanhdai.com/r/utils.json",
+    "https://prwt.dev/r/utils.json",
     "collapsible",
     "separator"
   ],
@@ -38,5 +38,5 @@
       "border": "oklch(0.274 0.006 286.033)"
     }
   },
-  "docs": "https://chanhdai.com/components/work-experience-component"
+  "docs": "https://prwt.dev/components/work-experience-component"
 }
