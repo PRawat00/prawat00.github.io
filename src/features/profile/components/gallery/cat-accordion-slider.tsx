@@ -302,7 +302,7 @@ export function CatAccordionSlider({
                       </div>
 
                       {/* Badges */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="grid grid-cols-2 gap-2">
                         {cat.badges.map((badge, i) => (
                           <m.div
                             key={i}
