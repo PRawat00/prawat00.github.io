@@ -1,19 +1,18 @@
-import dayjs from "dayjs";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
-import { USER } from "@/data/user";
-import { About } from "@/features/profile/components/about";
-import { Blog } from "@/features/profile/components/blog";
-import { Brand } from "@/features/profile/components/brand";
-import { Education } from "@/features/profile/components/education";
-import { Experiences } from "@/features/profile/components/experiences";
-import { Featured } from "@/features/profile/components/featured";
-import { Overview } from "@/features/profile/components/overview";
-import { ProfileCover } from "@/features/profile/components/profile-cover";
-import { ProfileHeader } from "@/features/profile/components/profile-header";
-import { Projects } from "@/features/profile/components/projects";
-import { SocialLinks } from "@/features/profile/components/social-links";
-import { TechStack } from "@/features/profile/components/tech-stack";
+import { USER } from "@/features/portfolio/data/user";
+import { About } from "@/features/portfolio/components/about";
+import { Blog } from "@/features/portfolio/components/blog";
+import { Brand } from "@/features/portfolio/components/brand";
+import { Education } from "@/features/portfolio/components/education";
+import { Experiences } from "@/features/portfolio/components/experiences";
+import { Featured } from "@/features/portfolio/components/featured";
+import { Overview } from "@/features/portfolio/components/overview";
+import { ProfileCover } from "@/features/portfolio/components/profile-cover";
+import { ProfileHeader } from "@/features/portfolio/components/profile-header";
+import { Projects } from "@/features/portfolio/components/projects";
+import { SocialLinks } from "@/features/portfolio/components/social-links";
+import { TechStack } from "@/features/portfolio/components/tech-stack";
 import { cn } from "@/lib/utils";
 
 export default function Page() {
@@ -69,8 +68,8 @@ function getPageJsonLd(): WithContext<PageSchema> {
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    dateCreated: dayjs(USER.dateCreated).toISOString(),
-    dateModified: dayjs().toISOString(),
+    dateCreated: new Date(USER.dateCreated).toISOString(),
+    dateModified: new Date().toISOString(),
     mainEntity: {
       "@type": "Person",
       name: USER.displayName,

@@ -4,7 +4,7 @@ import React from "react";
 
 import { Icons } from "@/components/icons";
 import { Tag } from "@/components/ui/tag";
-import type { Project } from "@/features/profile/types/projects";
+import type { Project } from "@/features/portfolio/types/projects";
 import { cn } from "@/lib/utils";
 
 export function ProjectCard({

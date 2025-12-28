@@ -1,6 +1,6 @@
 "use client";
 
-import dayjs from "dayjs";
+import { format } from "date-fns";
 import ReactConfetti from "react-confetti";
 import { useWindowSize } from "react-use";
 
@@ -17,14 +17,14 @@ export function Confetti({
 
   const { width, height } = useWindowSize();
 
-  const todayWithoutYear = dayjs().format("MM-DD");
-  const todayWithYear = dayjs().format("YYYY-MM-DD");
+  const todayWithoutYear = format(new Date(), "MM-dd");
+  const todayWithYear = format(new Date(), "yyyy-MM-dd");
   const shouldShow =
     datesWithoutYear.some(
-      (date) => dayjs(date).format("MM-DD") === todayWithoutYear
+      (date) => format(new Date(date), "MM-dd") === todayWithoutYear
     ) ||
     datesWithYear.some(
-      (date) => dayjs(date).format("YYYY-MM-DD") === todayWithYear
+      (date) => format(new Date(date), "yyyy-MM-dd") === todayWithYear
     );
 
   if (!isClient) {

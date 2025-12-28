@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { CatAccordionSlider } from "@/features/profile/components/gallery/cat-accordion-slider";
-import { catGalleryData } from "@/features/profile/data/cats";
+import { CatAccordionSlider } from "@/features/portfolio/components/gallery/cat-accordion-slider";
+import { catGalleryData } from "@/features/portfolio/data/cats";
 
 export const metadata: Metadata = {
   title: "Gallery",

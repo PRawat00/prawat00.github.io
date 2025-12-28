@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { format } from "date-fns";
 import {
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
@@ -59,8 +59,8 @@ export function AwardItem({
                   <dl>
                     <dt className="sr-only">Awarded in</dt>
                     <dd>
-                      <time dateTime={dayjs(award.date).toISOString()}>
-                        {dayjs(award.date).format("MM.YYYY")}
+                      <time dateTime={new Date(award.date).toISOString()}>
+                        {format(new Date(award.date), "MM.yyyy")}
                       </time>
                     </dd>
                   </dl>

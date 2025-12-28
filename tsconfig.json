@@ -15,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -26,17 +26,19 @@
       "@/*": [
         "./src/*"
       ]
-    },
+    }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "./src/scripts/**/*.ts"
+    "./src/scripts/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "./src/__registry__"
+    "./src/__registry__",
+    "./chanhdai.com"
   ]
 }

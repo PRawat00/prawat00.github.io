@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Tag } from "@/components/ui/tag";
 import { UTM_PARAMS } from "@/config/site";
-import type { Project } from "@/features/profile/types/projects";
+import type { Project } from "@/features/portfolio/types/projects";
 import { addQueryParams } from "@/utils/url";
 
 export function ProjectDetailModal({
