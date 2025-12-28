@@ -102,4 +102,67 @@ export const components: Registry["items"] = [
     },
     docs: "https://prwt.dev/components/work-experience-component",
   },
+  {
+    name: "scroll-fade-effect",
+    type: "registry:component",
+    description:
+      "Scroll-based fade masks for scrollable content using CSS mask gradients.",
+    title: "Scroll Fade Effect",
+    author: "prwt <prwt1507@gmail.com>",
+    dependencies: [],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "scroll-fade-effect/scroll-fade-effect.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "github-stars",
+    type: "registry:component",
+    description:
+      "Display GitHub repository star count with real-time updates from GitHub API.",
+    title: "GitHub Stars",
+    author: "prwt <prwt1507@gmail.com>",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["<registryBaseUrl>/utils.json", "button", "tooltip"],
+    files: [
+      {
+        path: "github-stars/github-stars.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "shimmering-text",
+    type: "registry:component",
+    description: "Text with an animated shimmer or shine effect using Motion.",
+    title: "Shimmering Text",
+    author: "prwt <prwt1507@gmail.com>",
+    dependencies: ["motion"],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "shimmering-text/shimmering-text.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "slide-to-unlock",
+    type: "registry:component",
+    description:
+      "iPhone-style slide to unlock interaction component with drag gesture support.",
+    title: "Slide to Unlock",
+    author: "prwt <prwt1507@gmail.com>",
+    dependencies: ["motion"],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "slide-to-unlock/slide-to-unlock.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

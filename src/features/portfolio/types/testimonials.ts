@@ -5,4 +5,5 @@ export type Testimonial = {
   company?: string;
   content: string;
   avatar?: string;
+  url?: string;
 };
