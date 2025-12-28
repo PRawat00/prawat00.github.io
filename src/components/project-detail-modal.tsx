@@ -110,7 +110,7 @@ export function ProjectDetailModal({
                 href={addQueryParams(project.demoLink, UTM_PARAMS)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-primary px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+                className="inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
               >
                 <ExternalLinkIcon className="size-4" />
                 View Live Demo

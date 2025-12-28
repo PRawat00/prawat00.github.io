@@ -8,6 +8,7 @@ import { LazyMotion } from "motion/react";
 import { ThemeProvider } from "next-themes";
 
 import { Toaster } from "@/components/ui/sonner";
+import { PostHogProvider } from "@/lib/posthog";
 
 const loadFeatures = () => import("motion/react").then((res) => res.domMax);
 
@@ -29,13 +30,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
           options={{ showSpinner: false }}
         >
           <LazyMotion features={loadFeatures} strict>
-            {children}
+            <PostHogProvider>
+              {children}
+              <Toaster />
+              <Analytics />
+              <SpeedInsights />
+            </PostHogProvider>
           </LazyMotion>
         </AppProgressProvider>
-
-        <Toaster />
-        <Analytics />
-        <SpeedInsights />
       </ThemeProvider>
     </JotaiProvider>
   );

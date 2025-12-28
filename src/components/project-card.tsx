@@ -126,7 +126,12 @@ export function ProjectCard({
         )}
 
         {/* Read More Indicator */}
-        <div className="pt-1 text-sm font-medium text-primary">Read more →</div>
+        <div className="flex items-center gap-1.5 pt-1 text-sm font-medium text-foreground transition-all group-hover/project:gap-2">
+          <span>Read more</span>
+          <span className="transition-transform group-hover/project:translate-x-0.5">
+            →
+          </span>
+        </div>
       </div>
     </button>
   );

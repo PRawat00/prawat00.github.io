@@ -8,7 +8,7 @@ export const PROJECTS: Project[] = [
       start: "09.2024",
     },
     link: "https://github.com/PRawat00",
-    demoLink: "https://cyber-intel-azure.vercel.app/",
+    demoLink: "https://cd.prwt.dev",
     skills: [
       "LoRA",
       "vLLM",

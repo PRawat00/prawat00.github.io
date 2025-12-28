@@ -165,4 +165,20 @@ export const components: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "consent-manager",
+    type: "registry:component",
+    description:
+      "GDPR-compliant cookie consent manager with PostHog integration using @c15t/nextjs.",
+    title: "Consent Manager",
+    author: "prwt <prwt1507@gmail.com>",
+    dependencies: ["@c15t/nextjs", "posthog-js"],
+    registryDependencies: ["<registryBaseUrl>/utils.json"],
+    files: [
+      {
+        path: "consent-manager/consent-manager.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ];

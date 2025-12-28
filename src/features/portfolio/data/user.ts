@@ -1,4 +1,6 @@
-export const USER = {
+import type { User } from "@/features/portfolio/types/user";
+
+export const USER: User = {
   firstName: "Priyanshu",
   lastName: "Rawat",
   displayName: "Priyanshu Rawat",
@@ -14,6 +16,7 @@ export const USER = {
     "Creating real-time threat intelligence systems",
   ],
   address: "Rochester, NY",
+  timeZone: "America/New_York",
   phoneNumber: "KzEgKDU4NSktMjMwLTIwMjY=", // E.164 format, base64 encoded
   email: "cHJhd2F0M0B1ci5yb2NoZXN0ZXIuZWR1", // base64 encoded
   website: "prwt.dev",
