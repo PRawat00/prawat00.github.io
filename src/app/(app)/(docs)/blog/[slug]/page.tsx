@@ -13,7 +13,11 @@ import { ShareMenu } from "@/components/share-menu";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/typography";
 import { SITE_INFO } from "@/config/site";
-import { findNeighbour, getAllPosts, getPostBySlug } from "@/data/blog";
+import {
+  findNeighbour,
+  getAllPosts,
+  getPostBySlug,
+} from "@/features/portfolio/data/blog";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";

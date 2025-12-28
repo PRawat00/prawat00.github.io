@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { PostItem } from "@/components/post-item";
-import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from "@/features/portfolio/data/blog";
 
 export const metadata: Metadata = {
   title: "Blog",

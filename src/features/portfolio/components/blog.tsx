@@ -4,7 +4,7 @@ import React from "react";
 
 import { PostItem } from "@/components/post-item";
 import { Button } from "@/components/ui/button";
-import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from "@/features/portfolio/data/blog";
 
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 

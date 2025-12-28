@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from "@/features/portfolio/data/blog";
 import { getLLMText } from "@/lib/get-llm-text";
 
 export async function generateStaticParams() {

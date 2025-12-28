@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { FeaturedCard } from "@/components/featured-card";
 import { ProjectDetailModal } from "@/components/project-detail-modal";
-import { featuredItems } from "@/data/featured";
+import { featuredItems } from "@/features/portfolio/data/featured";
 import { PROJECTS } from "@/features/portfolio/data/projects";
 import type { Project } from "@/features/portfolio/types/projects";
 

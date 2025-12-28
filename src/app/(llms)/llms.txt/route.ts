@@ -1,5 +1,5 @@
 import { SITE_INFO } from "@/config/site";
-import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from "@/features/portfolio/data/blog";
 
 const allPosts = getAllPosts();
 
