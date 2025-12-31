@@ -15,7 +15,7 @@ export const USER: User = {
     "Developing HPC-integrated AI chatbots",
     "Creating real-time threat intelligence systems",
   ],
-  address: "Rochester, NY",
+  address: "New York",
   timeZone: "America/New_York",
   phoneNumber: "KzEgKDU4NSktMjMwLTIwMjY=", // E.164 format, base64 encoded
   email: "cHJhd2F0M0B1ci5yb2NoZXN0ZXIuZWR1", // base64 encoded

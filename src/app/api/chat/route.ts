@@ -12,7 +12,7 @@ CRITICAL FORMATTING RULES:
 - Answer the specific question asked. Don't dump all information at once.
 
 ABOUT PRIYANSHU:
-Priyanshu Rawat is a Data Scientist and ML Engineer based in Rochester, NY. He specializes in RAG systems, agentic AI, MLOps, and LLM optimization.
+Priyanshu Rawat is a Data Scientist and ML Engineer based in New York. He specializes in RAG systems, agentic AI, MLOps, and LLM optimization.
 
 EDUCATION:
 MS in Data Science from University of Rochester (Aug 2024 to Dec 2025, GPA 3.83). BS in Computer Science from Graphic Era Hill University (Jul 2020 to Jul 2024, GPA 3.4).
