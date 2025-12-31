@@ -2,6 +2,37 @@ import type { Project } from "@/features/portfolio/types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "solartrack",
+    title: "SolarTrack - AI-Powered Solar Analytics Platform",
+    period: {
+      start: "MM.YYYY", // TODO: Replace with actual start date (e.g., "01.2025")
+    },
+    link: "https://github.com/YOUR_USERNAME/solartrack", // TODO: Replace with actual GitHub URL
+    demoLink: "https://solartrack-demo.vercel.app", // TODO: Replace with actual demo URL
+    skills: [
+      "Next.js 15",
+      "React 19",
+      "Three.js",
+      "FastAPI",
+      "Python",
+      "Supabase",
+      "PostgreSQL",
+      "Docker",
+      "Gemini Vision API",
+      "JWT Auth",
+      "Row-Level Security",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Three Fiber",
+      "SQLAlchemy",
+    ],
+    summary: `Full-stack SaaS platform combining AI/ML vision models for automated handwritten log digitization with advanced backend engineering for secure multi-tenant data management. Implements vision-based OCR with Gemini, natural language query generation with AST validation, and family-based collaboration with Row-Level Security enforcing database-level authorization.`,
+    description: `Architected production-grade full-stack SaaS with AI/ML pipeline: Gemini Vision API processes handwritten solar logbook photographs, extracts structured readings with multi-format date normalization (MM/DD/YY, YYYY-MM-DD variants), and returns validated JSON through Pydantic models. Engineered natural language SQL interface enabling users to query data in plain English—AI converts queries to SELECT statements, validates through Abstract Syntax Tree parsing, appends parameterized user filters, and automatically selects visualization type (line/stat/heatmap), preventing SQL injection through defense-in-depth validation. Designed production-ready SDE architecture: monorepo with pnpm workspaces and shared TypeScript types across frontend/backend, provider-agnostic AI abstraction supporting Gemini/OpenAI/Claude/local models without code changes, SQLAlchemy ORM supporting both PostgreSQL and Oracle databases, and row-level security policies enforcing multi-tenant isolation at the database layer. Built JWT authentication, rate limiting on AI endpoints, CORS configuration, and family collaboration system with invite tokens and membership tracking.`,
+    logo: "ST", // TODO: Replace with actual logo path or keep text abbreviation
+    image: "/r/SolarTrack_Preview.png", // TODO: Add actual screenshot to /public/r/ directory
+    isExpanded: true,
+  },
+  {
     id: "cyberintel-summarizer",
     title: "CyberIntel Summarizer: Real-Time Threat Intelligence System",
     period: {
