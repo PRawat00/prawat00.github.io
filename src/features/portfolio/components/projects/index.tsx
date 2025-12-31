@@ -11,6 +11,7 @@ import { Panel, PanelHeader, PanelTitle } from "../panel";
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const visibleProjects = PROJECTS.filter((p) => p.isVisible !== false);
 
   return (
     <Panel id="projects">
@@ -18,13 +19,13 @@ export function Projects() {
         <PanelTitle>
           Projects
           <sup className="ml-1 font-mono text-sm text-muted-foreground select-none">
-            ({PROJECTS.length})
+            ({visibleProjects.length})
           </sup>
         </PanelTitle>
       </PanelHeader>
 
       <div className="grid grid-cols-1 gap-6 p-4 lg:grid-cols-2">
-        {PROJECTS.map((project) => (
+        {visibleProjects.map((project) => (
           <ProjectCard
             key={project.id}
             project={project}

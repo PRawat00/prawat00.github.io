@@ -11,7 +11,7 @@ import { SITE_INFO } from "@/config/site";
 import { PROJECTS } from "@/features/portfolio/data/projects";
 
 export async function generateStaticParams() {
-  return PROJECTS.map((project) => ({
+  return PROJECTS.filter((p) => p.isVisible !== false).map((project) => ({
     id: project.id,
   }));
 }
@@ -76,11 +76,15 @@ export default async function ProjectPage({
   const { start, end } = project.period;
   const isOngoing = !end;
 
-  // Find previous and next projects
-  const projectIndex = PROJECTS.findIndex((p) => p.id === id);
-  const previousProject = projectIndex > 0 ? PROJECTS[projectIndex - 1] : null;
+  // Find previous and next projects (only visible projects)
+  const visibleProjects = PROJECTS.filter((p) => p.isVisible !== false);
+  const projectIndex = visibleProjects.findIndex((p) => p.id === id);
+  const previousProject =
+    projectIndex > 0 ? visibleProjects[projectIndex - 1] : null;
   const nextProject =
-    projectIndex < PROJECTS.length - 1 ? PROJECTS[projectIndex + 1] : null;
+    projectIndex < visibleProjects.length - 1
+      ? visibleProjects[projectIndex + 1]
+      : null;
 
   return (
     <>

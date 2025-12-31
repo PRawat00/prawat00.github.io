@@ -15,4 +15,5 @@ export type Project = {
   isExpanded?: boolean;
   showGithubLink?: boolean;
   showDemoLink?: boolean;
+  isVisible?: boolean;
 };

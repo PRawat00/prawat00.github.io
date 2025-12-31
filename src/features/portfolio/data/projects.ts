@@ -31,6 +31,7 @@ export const PROJECTS: Project[] = [
     logo: "ST", // TODO: Replace with actual logo path or keep text abbreviation
     image: "/r/SolarTrack_Preview.png", // TODO: Add actual screenshot to /public/r/ directory
     isExpanded: true,
+    isVisible: false,
   },
   {
     id: "cyberintel-summarizer",
