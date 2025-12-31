@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  ExternalLinkIcon,
-  GithubIcon,
-  InfinityIcon,
-  XIcon,
-} from "lucide-react";
+import { InfinityIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -16,9 +11,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Tag } from "@/components/ui/tag";
-import { UTM_PARAMS } from "@/config/site";
+import { ProjectActionButtons } from "@/components/project-action-buttons";
 import type { Project } from "@/features/portfolio/types/projects";
-import { addQueryParams } from "@/utils/url";
 
 export function ProjectDetailModal({
   project,
@@ -93,30 +87,7 @@ export function ProjectDetailModal({
           </DialogHeader>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap gap-3">
-            {project.link && (
-              <a
-                href={addQueryParams(project.link, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-              >
-                <GithubIcon className="size-4" />
-                View on GitHub
-              </a>
-            )}
-            {project.demoLink && (
-              <a
-                href={addQueryParams(project.demoLink, UTM_PARAMS)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-              >
-                <ExternalLinkIcon className="size-4" />
-                View Live Demo
-              </a>
-            )}
-          </div>
+          <ProjectActionButtons project={project} variant="modal" />
 
           {/* Description */}
           {project.description && (

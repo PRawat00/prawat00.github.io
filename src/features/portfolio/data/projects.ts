@@ -52,6 +52,8 @@ export const PROJECTS: Project[] = [
     logo: "/images/companies/Wegamans_logo.jpeg",
     image: "/r/Wegmans_Image.png",
     isExpanded: false,
+    showGithubLink: false,
+    showDemoLink: false,
   },
 
   // Temporarily commented out projects - can be uncommented when needed

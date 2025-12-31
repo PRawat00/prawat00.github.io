@@ -4,6 +4,7 @@ import React from "react";
 
 import { Icons } from "@/components/icons";
 import { Tag } from "@/components/ui/tag";
+import { ProjectActionButtons } from "@/components/project-action-buttons";
 import type { Project } from "@/features/portfolio/types/projects";
 import { cn } from "@/lib/utils";
 
@@ -124,6 +125,11 @@ export function ProjectCard({
             )}
           </ul>
         )}
+
+        {/* Action Buttons */}
+        <div onClick={(e) => e.stopPropagation()}>
+          <ProjectActionButtons project={project} variant="card" />
+        </div>
 
         {/* Read More Indicator */}
         <div className="flex items-center gap-1.5 pt-1 text-sm font-medium text-foreground transition-all group-hover/project:gap-2">

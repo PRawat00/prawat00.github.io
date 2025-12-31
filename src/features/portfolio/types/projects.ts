@@ -13,4 +13,6 @@ export type Project = {
   logo?: string;
   image?: string;
   isExpanded?: boolean;
+  showGithubLink?: boolean;
+  showDemoLink?: boolean;
 };
