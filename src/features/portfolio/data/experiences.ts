@@ -2,39 +2,6 @@ import type { Experience } from "@/features/portfolio/types/experiences";
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: "flx-ai",
-    companyName: "FLX AI",
-    companyLogo: "/images/companies/flx-ai.png",
-    positions: [
-      {
-        id: "flx-ai-data-science-intern",
-        title: "Data Science Intern",
-        employmentPeriod: {
-          start: "06.2025",
-          end: "07.2025",
-        },
-        employmentType: "Internship",
-        icon: "code",
-        description: `- Cut financial analysis time from days to hours by engineering an autonomous agent that synthesizes 500+ pages of SEC filings (10-K, 8-K) to generate instant answers
-- Engineered an OCR pipeline (90% accuracy on financial tables) using Docling that implemented section-based chunking while preserving and linking citation metadata to enable precise source attribution
-- Engineered a RAG pipeline (FastAPI/pgvector) with a ColBERT v2 re-ranker, cutting latency by 75% by implementing the PLAID search engine and dynamic batching`,
-        skills: [
-          "LangGraph",
-          "FastAPI",
-          "ColBERT v2",
-          "PostgreSQL",
-          "pgvector",
-          "Docker",
-          "Docling",
-          "OCR",
-          "PLAID",
-        ],
-        isExpanded: true,
-      },
-    ],
-    isCurrentEmployer: false,
-  },
-  {
     id: "uor-circ",
     companyName: "Center for Integrated Research Computing, UoR",
     companyLogo: "/images/companies/uor-circ.svg",
@@ -66,6 +33,39 @@ export const EXPERIENCES: Experience[] = [
       },
     ],
     isCurrentEmployer: true,
+  },
+  {
+    id: "flx-ai",
+    companyName: "FLX AI",
+    companyLogo: "/images/companies/flx-ai.png",
+    positions: [
+      {
+        id: "flx-ai-data-science-intern",
+        title: "Data Science Intern",
+        employmentPeriod: {
+          start: "06.2025",
+          end: "07.2025",
+        },
+        employmentType: "Internship",
+        icon: "code",
+        description: `- Cut financial analysis time from days to hours by engineering an autonomous agent that synthesizes 500+ pages of SEC filings (10-K, 8-K) to generate instant answers
+- Engineered an OCR pipeline (90% accuracy on financial tables) using Docling that implemented section-based chunking while preserving and linking citation metadata to enable precise source attribution
+- Engineered a RAG pipeline (FastAPI/pgvector) with a ColBERT v2 re-ranker, cutting latency by 75% by implementing the PLAID search engine and dynamic batching`,
+        skills: [
+          "LangGraph",
+          "FastAPI",
+          "ColBERT v2",
+          "PostgreSQL",
+          "pgvector",
+          "Docker",
+          "Docling",
+          "OCR",
+          "PLAID",
+        ],
+        isExpanded: true,
+      },
+    ],
+    isCurrentEmployer: false,
   },
   {
     id: "greene-career",

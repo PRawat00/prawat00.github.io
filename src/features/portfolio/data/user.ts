@@ -30,8 +30,8 @@ export const USER: User = {
   jobs: [
     {
       title: "Data Scientist",
-      company: "Center for Integrated Research Computing, UoR",
-      website: "https://rochester.edu/it/circ",
+      company: "CIRC, UofR",
+      website: "https://www.circ.rochester.edu",
     },
   ],
   about: `
