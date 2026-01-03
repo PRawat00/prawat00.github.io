@@ -57,11 +57,11 @@ const MENU_LINKS: CommandLinkItem[] = [
     href: "/",
     icon: PrwtMark,
   },
-  {
-    title: "Blog",
-    href: "/blog",
-    icon: RssIcon,
-  },
+  // {
+  //   title: "Blog",
+  //   href: "/blog",
+  //   icon: RssIcon,
+  // },
   {
     title: "Components",
     href: "/components",

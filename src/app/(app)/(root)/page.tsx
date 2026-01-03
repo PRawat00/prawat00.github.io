@@ -43,11 +43,8 @@ export default function Page() {
         <TechStack />
         <Separator />
 
-        <Featured />
-        <Separator />
-
-        <Blog />
-        <Separator />
+        {/* <Featured /> */}
+        {/* <Separator /> */}
 
         <Experiences />
         <Separator />
@@ -57,6 +54,9 @@ export default function Page() {
 
         <Projects />
         <Separator />
+
+        {/* <Blog /> */}
+        {/* <Separator /> */}
 
         <Bookmarks />
         <Separator />
