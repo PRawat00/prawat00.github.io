@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BackToProjectsButton } from "@/components/back-to-projects-button";
 import { ProjectActionButtons } from "@/components/project-action-buttons";
 import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
@@ -89,16 +90,7 @@ export default async function ProjectPage({
   return (
     <>
       <div className="flex items-center justify-between p-2 pl-4">
-        <Button
-          className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground"
-          variant="link"
-          asChild
-        >
-          <Link href="/#projects">
-            <ArrowLeftIcon />
-            Projects
-          </Link>
-        </Button>
+        <BackToProjectsButton />
 
         <div className="flex items-center gap-2">
           {previousProject && (
@@ -126,9 +118,20 @@ export default async function ProjectPage({
 
       <Prose className="px-4">
         <div className="mb-6">
-          <h1 className="screen-line-after mb-3 font-semibold">
-            {project.title}
-          </h1>
+          <div className="mb-3 flex items-start justify-between gap-4">
+            <h1 className="screen-line-after flex-1 font-semibold">
+              {project.title}
+            </h1>
+
+            {/* Action Buttons on the right */}
+            <div className="shrink-0">
+              <ProjectActionButtons
+                project={project}
+                variant="modal"
+                hideOnDetailPage={true}
+              />
+            </div>
+          </div>
 
           <div className="flex items-center gap-0.5 text-sm text-muted-foreground">
             <span>{start}</span>
@@ -141,11 +144,6 @@ export default async function ProjectPage({
               <span>{end}</span>
             )}
           </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="mb-6">
-          <ProjectActionButtons project={project} variant="modal" />
         </div>
 
         {/* Summary */}

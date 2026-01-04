@@ -2,10 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { PROJECTS } from "@/features/portfolio/data/projects";
-import type {
-  ProjectCategory,
-  Project,
-} from "@/features/portfolio/types/projects";
+import type { ProjectCategory } from "@/features/portfolio/types/projects";
 import {
   Panel,
   PanelHeader,
@@ -18,7 +15,6 @@ import {
 } from "@/features/portfolio/components/projects-gallery/view-toggle";
 import { ProjectGalleryGrid } from "@/features/portfolio/components/projects-gallery/project-gallery-grid";
 import { ProjectGalleryList } from "@/features/portfolio/components/projects-gallery/project-gallery-list";
-import { ProjectDetailModal } from "@/components/project-detail-modal";
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | "All">(
@@ -31,7 +27,6 @@ export default function ProjectsPage() {
     }
     return "grid";
   });
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Filter visible projects
   const visibleProjects = useMemo(
@@ -93,10 +88,7 @@ export default function ProjectsPage() {
 
           {/* Project Display */}
           {viewMode === "grid" ? (
-            <ProjectGalleryGrid
-              projects={filteredProjects}
-              onProjectClick={setSelectedProject}
-            />
+            <ProjectGalleryGrid projects={filteredProjects} />
           ) : (
             <ProjectGalleryList projects={filteredProjects} />
           )}
@@ -104,13 +96,6 @@ export default function ProjectsPage() {
 
         <div className="screen-line-before h-4 w-full border-x border-edge" />
       </div>
-
-      {/* Project Detail Modal */}
-      <ProjectDetailModal
-        project={selectedProject}
-        open={!!selectedProject}
-        onOpenChange={(open) => !open && setSelectedProject(null)}
-      />
     </>
   );
 }

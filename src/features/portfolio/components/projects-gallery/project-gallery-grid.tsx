@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
 import type { Project } from "@/features/portfolio/types/projects";
@@ -8,13 +9,9 @@ import { ProjectCard } from "@/components/project-card";
 
 interface ProjectGalleryGridProps {
   projects: Project[];
-  onProjectClick: (project: Project) => void;
 }
 
-export function ProjectGalleryGrid({
-  projects,
-  onProjectClick,
-}: ProjectGalleryGridProps) {
+export function ProjectGalleryGrid({ projects }: ProjectGalleryGridProps) {
   if (projects.length === 0) {
     return (
       <div className="flex min-h-[400px] items-center justify-center p-8">
@@ -41,11 +38,9 @@ export function ProjectGalleryGrid({
               layout: { duration: 0.3 },
             }}
           >
-            <ProjectCard
-              project={project}
-              onClick={() => onProjectClick(project)}
-              variant="gallery"
-            />
+            <Link href={`/projects/${project.id}`}>
+              <ProjectCard project={project} variant="gallery" />
+            </Link>
           </m.div>
         ))}
       </AnimatePresence>

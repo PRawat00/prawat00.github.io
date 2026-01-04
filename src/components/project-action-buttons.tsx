@@ -12,9 +12,11 @@ import { UTM_PARAMS } from "@/config/site";
 export function ProjectActionButtons({
   project,
   variant = "modal",
+  hideOnDetailPage = false,
 }: {
   project: Project;
   variant?: "card" | "modal";
+  hideOnDetailPage?: boolean;
 }) {
   const showGithub = project.link && project.showGithubLink !== false;
   const showDemo = project.demoLink && project.showDemoLink !== false;
@@ -129,7 +131,7 @@ export function ProjectActionButtons({
           href={addQueryParams(project.link, UTM_PARAMS)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          className="inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
         >
           <GithubIcon className="size-4" />
           View on GitHub
@@ -146,7 +148,7 @@ export function ProjectActionButtons({
           View Live Demo
         </a>
       )}
-      {showCaseStudy && (
+      {showCaseStudy && !hideOnDetailPage && (
         <Link
           href={`/projects/${project.id}`}
           className="inline-flex items-center gap-2 rounded-lg border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-foreground/30"

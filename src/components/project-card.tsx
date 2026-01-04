@@ -30,14 +30,14 @@ export function ProjectCard({
   return (
     <div
       onClick={onClick}
-      onKeyDown={handleKeyDown}
-      role="button"
-      tabIndex={0}
+      onKeyDown={onClick ? handleKeyDown : undefined}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
       className={cn(
         "group/project flex flex-col gap-0 overflow-hidden rounded-lg border border-edge text-left",
         "max-sm:screen-line-before max-sm:screen-line-after",
         "lg:nth-[2n+1]:screen-line-before lg:nth-[2n+1]:screen-line-after",
-        "cursor-pointer transition-colors hover:border-foreground/20"
+        onClick && "cursor-pointer transition-colors hover:border-foreground/20"
       )}
     >
       {/* Project Image */}
