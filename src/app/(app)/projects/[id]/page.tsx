@@ -4,12 +4,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BackToProjectsButton } from "@/components/back-to-projects-button";
+import { MDX } from "@/components/mdx";
 import { ProjectActionButtons } from "@/components/project-action-buttons";
 import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
 import { Prose } from "@/components/ui/typography";
 import { SITE_INFO } from "@/config/site";
 import { PROJECTS } from "@/features/portfolio/data/projects";
+import { getProjectContent } from "@/features/portfolio/data/project-content";
 
 export async function generateStaticParams() {
   return PROJECTS.filter((p) => p.isVisible !== false).map((project) => ({
@@ -73,6 +75,9 @@ export default async function ProjectPage({
   if (!project) {
     notFound();
   }
+
+  // Try to load MDX content for this project
+  const projectContent = await getProjectContent(id);
 
   const { start, end } = project.period;
   const isOngoing = !end;
@@ -146,28 +151,37 @@ export default async function ProjectPage({
           </div>
         </div>
 
-        {/* Summary */}
-        {project.summary && <p className="lead mt-6 mb-6">{project.summary}</p>}
+        {/* Conditionally render MDX content or fallback to summary/description */}
+        {projectContent ? (
+          <MDX code={projectContent.content} />
+        ) : (
+          <>
+            {/* Summary */}
+            {project.summary && (
+              <p className="lead mt-6 mb-6">{project.summary}</p>
+            )}
 
-        {/* Description */}
-        {project.description && (
-          <div className="my-8 leading-relaxed whitespace-pre-line text-muted-foreground">
-            {project.description}
-          </div>
-        )}
+            {/* Description */}
+            {project.description && (
+              <div className="my-8 leading-relaxed whitespace-pre-line text-muted-foreground">
+                {project.description}
+              </div>
+            )}
 
-        {/* Technologies Used */}
-        {project.skills.length > 0 && (
-          <div className="my-8">
-            <h2 className="mb-4 font-semibold">Technologies Used</h2>
-            <div className="flex flex-wrap gap-2">
-              {project.skills.map((skill, index) => (
-                <Tag key={index} className="text-xs">
-                  {skill}
-                </Tag>
-              ))}
-            </div>
-          </div>
+            {/* Technologies Used - Only for projects without MDX */}
+            {project.skills.length > 0 && (
+              <div className="my-8">
+                <h2 className="mb-4 font-semibold">Technologies Used</h2>
+                <div className="flex flex-wrap gap-2">
+                  {project.skills.map((skill, index) => (
+                    <Tag key={index} className="text-xs">
+                      {skill}
+                    </Tag>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
       </Prose>
 

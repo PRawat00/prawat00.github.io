@@ -1,0 +1,80 @@
+---
+projectId: "wegmans-capstone"
+lastUpdated: "2025-01-03"
+---
+
+## Overview
+
+The Wegmans Capstone Project focused on identifying customers with gluten sensitivity and celiac disease through their purchase behavior patterns. Rather than relying on explicit customer surveys or loyalty program data, the project developed machine learning classifiers that could infer dietary needs from 5.6 million transactions across 18,395 customers over a year.
+
+The goal was to enable targeted marketing campaigns for gluten-free products without wasting resources on customers unlikely to be interested. This addresses a key retail challenge: how to serve niche dietary segments efficiently while maintaining marketing ROI.
+
+## Technologies Used
+
+XGBoost, Feature Engineering, Class Imbalance Handling, Threshold Optimization, Customer-Based Train/Test Split, Cost-Sensitive Learning, F1-optimal, Youden's J, PR-AUC, Business Analytics
+
+## Gluten Sensitivity Classification
+
+### Goal
+
+Develop an XGBoost classifier to identify customers with gluten sensitivity based on their transaction history. The model predicts IS_GLUTEN_FREE status, where about 10.5% of customers in the dataset exhibited gluten-free purchasing patterns.
+
+### Approach
+
+The core challenge was dealing with severe class imbalance—only 10.5% of customers showed gluten-free behaviors. We addressed this through multiple techniques. First, we applied 3:1 undersampling of the majority class to balance training data. Second, we used scale_pos_weight in XGBoost to apply cost weighting that penalized misclassifying gluten-free customers more heavily.
+
+For features, we engineered a 23-feature pipeline from the transaction data, focusing on purchase patterns rather than explicit product mentions. Top predictors included the percentage of gluten-free purchases, number of stores where gluten-free products were bought, and product diversity in gluten-free categories.
+
+To prevent data leakage and ensure realistic performance estimates, we used customer-level train/test splitting rather than random transaction splitting. This meant all transactions for a customer went into either training or testing, simulating how the model would work in production with completely new customers.
+
+### Considerations
+
+Marketing teams typically send promotions to all customers or rely on explicit opt-in data. This wastes resources sending irrelevant offers and misses customers who might be interested. Automated identification from purchase history enables precise targeting without requiring customers to disclose dietary information.
+
+### Results & Impact
+
+The model achieved ROC-AUC of 0.8849, indicating strong discrimination between gluten-sensitive and non-gluten-sensitive customers. At the top 10% of predicted probabilities, the model achieved 65.4% precision—meaning roughly two-thirds of the highest-confidence predictions were actually gluten-sensitive customers. This precision level allows marketing to confidently send targeted campaigns knowing most recipients will be interested.
+
+## Celiac Disease Detection
+
+### Goal
+
+Develop a separate XGBoost classifier for celiac disease detection (IS_CELIAC), which is a more severe condition affecting about 3.1% of the population. This distinction allows the company to tailor messaging and product recommendations differently for customers with diagnosed celiac disease versus general gluten sensitivity.
+
+### Approach
+
+The celiac model used a similar architecture to the gluten sensitivity model but handled even more extreme class imbalance (only 3.1% of customers). We applied the same feature engineering approach but tuned hyperparameters separately through Optuna hyperparameter optimization to find configurations that performed best for this rarer condition.
+
+### Considerations
+
+Celiac disease is a medical condition requiring strict gluten avoidance. These customers benefit from specialized support—information about cross-contamination, certified gluten-free products, and proactive customer service. A separate model allows the company to identify and serve this segment differently from general gluten-sensitive customers.
+
+### Results & Impact
+
+The celiac model achieved ROC-AUC of 0.9401, performing even better than the gluten sensitivity model due to the distinctiveness of celiac purchasing patterns. At top 10%, it achieved 25.3% precision, which while lower than the gluten sensitivity model, still provides value for identifying candidates for specialized celiac customer service programs.
+
+## Feature Engineering & Threshold Optimization
+
+### Goal
+
+Build a comprehensive threshold optimization framework that evaluated the tradeoff between precision and recall based on business cost. Instead of using default 0.5 probability thresholds, test multiple threshold strategies across different model configurations.
+
+### Approach
+
+We performed extensive validation with 100-fold cross-validation comparing four different threshold strategies across eight model configurations. The analysis examined the cost implications of false positives (sending offers to uninterested customers) versus false negatives (missing interested customers).
+
+### Considerations
+
+Threshold selection directly impacts business ROI. A lower threshold catches more gluten-sensitive customers (higher recall) but wastes money on false positives. A higher threshold improves precision but misses interested customers. By analyzing the cost structure of marketing campaigns, we could optimize thresholds for maximum business value rather than maximum statistical accuracy.
+
+### Results & Impact
+
+Threshold optimization revealed that adjusting the decision boundary could reduce marketing campaign costs by 40-60% compared to standard approaches. Instead of casting a wide net with moderate precision, the optimized model could identify the highest-confidence gluten-sensitive customers, allowing marketing to achieve better ROI by being more selective with their budget.
+
+## How It All Comes Together
+
+The project demonstrates how machine learning can solve a real retail problem when you move beyond surface-level metrics to understand business constraints and customer behavior patterns.
+
+The key insight was that customers reveal their dietary needs through purchase behavior—you don't need them to tell you. By analyzing transaction patterns rather than relying on surveys or explicit signals, the company could identify market segments, target them efficiently, and improve customer satisfaction by sending relevant offers.
+
+The combination of careful feature engineering, proper handling of class imbalance, and business-aware threshold optimization created a system that actually improved marketing operations, not just achieved high accuracy numbers. The work showed that model performance metrics matter less than whether the solution actually helps the business achieve its goals.

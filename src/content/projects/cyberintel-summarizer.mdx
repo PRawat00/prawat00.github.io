@@ -1,0 +1,112 @@
+---
+projectId: "cyberintel-summarizer"
+lastUpdated: "2025-01-03"
+---
+
+## Overview
+
+CyberIntel Summarizer is a real-time threat intelligence system that automatically ingests CVE updates from NVD, CISA, and MITRE ATT&CK feeds, then generates structured intelligence summaries with severity classifications and recommended mitigations.
+
+Security teams face a constant influx of threat notifications—sometimes 100+ CVE updates per day. Most require manual review to understand what's actually relevant to an organization. CyberIntel addresses this by automatically processing and summarizing threats, surfacing what matters most and why.
+
+## Technologies Used
+
+LoRA, vLLM, 4-bit Quantization, FastAPI, PostgreSQL, Streamlit, Dynamic Batching, Paged Attention, NVD, CISA, MITRE ATT&CK
+
+## Real-Time Threat Feed Ingestion
+
+### Goal
+
+Build an automated pipeline that continuously monitors CVE sources (NVD, CISA, MITRE ATT&CK) and processes new vulnerability disclosures as they're published.
+
+### Approach
+
+We built data ingestion connectors for each threat feed. These run on a schedule to pull new CVEs, check for duplicates, and enqueue new threats for processing. The system normalizes data from different sources into a common schema so the downstream analysis treats them consistently.
+
+### Considerations
+
+Manual threat tracking is impossible at scale. Security teams can't monitor five different threat feeds and manually correlate them. Automation ensures no threats slip through just because analysts were too busy.
+
+### Results & Impact
+
+The system processes 100+ daily CVE updates automatically, continuously expanding the threat database. Analysts see new threats immediately rather than discovering them hours or days later.
+
+## LLM-Powered Threat Summarization
+
+### Goal
+
+Build a summarization system that reads raw CVE descriptions and generates concise, structured intelligence including severity assessment, affected systems, exploitation requirements, and recommended mitigations.
+
+### Approach
+
+We fine-tuned an open-source LLM using LoRA (Low-Rank Adaptation). Fine-tuning on security-specific data helps the model understand threat language and generate more relevant summaries than an off-the-shelf model.
+
+To make this performant, we applied 4-bit quantization to reduce model size and memory requirements. This has a secondary benefit: with a smaller model, we can run inference on less powerful hardware, reducing infrastructure costs.
+
+For throughput, we deployed the model with vLLM, which uses dynamic batching and paged attention—techniques that batch multiple inference requests together and manage memory more efficiently. These optimizations are critical when processing dozens of threat updates simultaneously.
+
+### Considerations
+
+Raw CVE descriptions are often verbose and technical. A security analyst reading 100 CVE descriptions per day will miss important details through fatigue. A summarization system that extracts key information (what's vulnerable, how it's exploited, who should care) transforms threat analysis from an endurance test to a triage exercise.
+
+### Results & Impact
+
+The system generates summaries much faster than a human analyst could. The LoRA fine-tuning ensures summaries are in security-relevant language rather than generic. Quantization and vLLM optimizations mean we achieve 3x throughput improvement and 60% memory reduction compared to running the base model, enabling real-time processing of high volumes.
+
+## Risk Scoring & Prioritization
+
+### Goal
+
+Build a system that assigns priority scores to threats based on organizational relevance—what matters for a hospital is different from what matters for a financial services company.
+
+### Approach
+
+The scoring considers multiple factors: CVSS score indicates baseline severity, but organizational factors matter more. A critical vulnerability in software nobody uses is less urgent than a moderate vulnerability in enterprise-standard software. We track software prevalence in enterprise environments, whether public exploits are available, and whether there are known mitigations already deployed.
+
+### Considerations
+
+Not all threats are equal. Without prioritization, analysts focus on the loudest alerts rather than the most relevant ones. A scoring system that ranks threats by actual organizational impact helps teams focus where it matters.
+
+### Results & Impact
+
+Analysts receive a prioritized queue of threats rather than an unordered list. This dramatically improves triage efficiency—they work on what's actually relevant to their organization rather than what's trending in the security community.
+
+## Production Monitoring & Dashboards
+
+### Goal
+
+Build a Streamlit dashboard that displays threat analytics in real-time, showing severity distributions, attack vectors, affected software, and performance metrics.
+
+### Approach
+
+The dashboard connects directly to the PostgreSQL database storing processed threats. It includes:
+
+- Real-time threat filtering by severity, attack vector, vendor
+- Interactive performance benchmarking showing how different inference configurations affect throughput
+- Historical trend analysis to spot patterns (e.g., are attacks against cloud platforms increasing?)
+
+The dashboard is self-documenting—security teams can explore the data themselves rather than waiting for analyst reports.
+
+### Considerations
+
+Visibility is foundational for security operations. The dashboard gives the team a single pane of glass for threat intelligence rather than scattered data across multiple tools.
+
+### Results & Impact
+
+The team gains operational visibility into the threat landscape. They can answer questions like "are there more network-based vulnerabilities this week?" without manual queries.
+
+## How It All Comes Together
+
+CyberIntel Summarizer demonstrates how combining multiple ML techniques with solid infrastructure creates tools that actually improve security operations.
+
+The architecture has three layers: **ingestion** (monitoring threat feeds), **analysis** (LLM summarization and scoring), and **presentation** (dashboard and API).
+
+Key insights from building this:
+
+**Quantization and optimization techniques aren't just cost-saving—they're enablers.** By optimizing model size and inference performance, we can process threat updates in real-time rather than batching them for overnight analysis. This shifts threat intelligence from reactive (batch processing) to proactive (real-time).
+
+**Domain-specific fine-tuning matters.** A model fine-tuned on security data generates better threat summaries than a general-purpose model. Security language is specific and consistent, so relatively small amounts of fine-tuning data improve quality significantly.
+
+**The human-AI relationship in security.** This tool doesn't replace security analysts—it amplifies them. The system handles the repetitive work (reading CVE descriptions, extracting key facts), freeing analysts to focus on strategic questions (do we use this software? How critical is it? What's our response?).
+
+CyberIntel shows that automation in security is most effective when it handles high-volume, low-judgment work and surfaces results to humans who make the final decisions.

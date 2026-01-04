@@ -99,11 +99,6 @@ export function ProjectGalleryList({ projects }: ProjectGalleryListProps) {
                       <h3 className="font-medium text-foreground group-hover:underline">
                         {project.title}
                       </h3>
-                      {project.summary && (
-                        <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
-                          {project.summary}
-                        </p>
-                      )}
                       <div className="mt-2 flex flex-wrap gap-1">
                         {project.skills.slice(0, 4).map((skill, i) => (
                           <Tag key={i} className="text-xs">

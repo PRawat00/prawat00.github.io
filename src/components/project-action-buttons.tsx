@@ -30,93 +30,99 @@ export function ProjectActionButtons({
   if (variant === "card") {
     return (
       <div className="flex flex-wrap gap-2">
-        {showGithub && (
-          <a
-            href={addQueryParams(project.link, UTM_PARAMS)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleButtonClick}
-            className="hidden md:inline-flex"
+        {showGithub && project.link && (
+          <Button
+            size="sm"
+            variant="default"
+            className="hidden gap-1.5 md:inline-flex"
+            onClick={(e) => {
+              handleButtonClick(e);
+              window.open(addQueryParams(project.link, UTM_PARAMS), "_blank");
+            }}
           >
-            <Button size="sm" variant="default" className="gap-1.5">
-              <GithubIcon className="size-3.5" />
-              <span className="hidden lg:inline">GitHub</span>
-            </Button>
-          </a>
+            <GithubIcon className="size-3.5" />
+            <span className="hidden lg:inline">GitHub</span>
+          </Button>
         )}
         {showDemo && project.demoLink && (
-          <a
-            href={addQueryParams(project.demoLink, UTM_PARAMS)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleButtonClick}
-            className="hidden md:inline-flex"
+          <Button
+            size="sm"
+            variant="secondary"
+            className="hidden gap-1.5 md:inline-flex"
+            onClick={(e) => {
+              handleButtonClick(e);
+              window.open(
+                addQueryParams(project.demoLink || "", UTM_PARAMS),
+                "_blank"
+              );
+            }}
           >
-            <Button size="sm" variant="secondary" className="gap-1.5">
-              <ExternalLinkIcon className="size-3.5" />
-              <span className="hidden lg:inline">Demo</span>
-            </Button>
-          </a>
+            <ExternalLinkIcon className="size-3.5" />
+            <span className="hidden lg:inline">Demo</span>
+          </Button>
         )}
         {showCaseStudy && (
-          <Link href={`/projects/${project.id}`} onClick={handleButtonClick}>
-            <Button size="sm" variant="outline" className="gap-1.5">
-              <FileTextIcon className="size-3.5" />
-              <span className="hidden lg:inline">Case Study</span>
-            </Button>
-          </Link>
+          <Button
+            size="sm"
+            variant="outline"
+            className="hidden gap-1.5 md:inline-flex"
+            onClick={(e) => {
+              handleButtonClick(e);
+            }}
+          >
+            <FileTextIcon className="size-3.5" />
+            <span className="hidden lg:inline">Case Study</span>
+          </Button>
         )}
 
         {/* Icon-only buttons on mobile */}
         <div className="flex gap-2 md:hidden">
-          {showGithub && (
-            <a
-              href={addQueryParams(project.link, UTM_PARAMS)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleButtonClick}
+          {showGithub && project.link && (
+            <Button
+              size="sm"
+              variant="default"
+              className="p-2"
+              title="View on GitHub"
+              onClick={(e) => {
+                handleButtonClick(e);
+                window.open(addQueryParams(project.link, UTM_PARAMS), "_blank");
+              }}
             >
-              <Button
-                size="sm"
-                variant="default"
-                className="p-2"
-                title="View on GitHub"
-              >
-                <GithubIcon className="size-4" />
-                <span className="sr-only">View on GitHub</span>
-              </Button>
-            </a>
+              <GithubIcon className="size-4" />
+              <span className="sr-only">View on GitHub</span>
+            </Button>
           )}
           {showDemo && project.demoLink && (
-            <a
-              href={addQueryParams(project.demoLink, UTM_PARAMS)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleButtonClick}
+            <Button
+              size="sm"
+              variant="secondary"
+              className="p-2"
+              title="View Live Demo"
+              onClick={(e) => {
+                handleButtonClick(e);
+                window.open(
+                  addQueryParams(project.demoLink || "", UTM_PARAMS),
+                  "_blank"
+                );
+              }}
             >
-              <Button
-                size="sm"
-                variant="secondary"
-                className="p-2"
-                title="View Live Demo"
-              >
-                <ExternalLinkIcon className="size-4" />
-                <span className="sr-only">View Live Demo</span>
-              </Button>
-            </a>
+              <ExternalLinkIcon className="size-4" />
+              <span className="sr-only">View Live Demo</span>
+            </Button>
           )}
           {showCaseStudy && (
-            <Link href={`/projects/${project.id}`} onClick={handleButtonClick}>
-              <Button
-                size="sm"
-                variant="outline"
-                className="p-2"
-                title="View Case Study"
-              >
-                <FileTextIcon className="size-4" />
-                <span className="sr-only">View Case Study</span>
-              </Button>
-            </Link>
+            <Button
+              size="sm"
+              variant="outline"
+              className="p-2"
+              title="View Case Study"
+              onClick={(e) => {
+                handleButtonClick(e);
+              }}
+            >
+              <FileTextIcon className="size-4" />
+              <span className="sr-only">View Case Study</span>
+            </Button>
           )}
         </div>
       </div>

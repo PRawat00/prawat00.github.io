@@ -8,7 +8,7 @@ export const PROJECTS: Project[] = [
       start: "MM.YYYY", // TODO: Replace with actual start date (e.g., "01.2025")
     },
     link: "https://github.com/YOUR_USERNAME/solartrack", // TODO: Replace with actual GitHub URL
-    demoLink: "https://solartrack-demo.vercel.app", // TODO: Replace with actual demo URL
+    demoLink: "https://solartrack.prwt.dev", // TODO: Replace with actual demo URL
     skills: [
       "Next.js 15",
       "React 19",
@@ -29,10 +29,11 @@ export const PROJECTS: Project[] = [
     summary: `Full-stack SaaS platform combining AI/ML vision models for automated handwritten log digitization with advanced backend engineering for secure multi-tenant data management. Implements vision-based OCR with Gemini, natural language query generation with AST validation, and family-based collaboration with Row-Level Security enforcing database-level authorization.`,
     description: `Architected production-grade full-stack SaaS with AI/ML pipeline: Gemini Vision API processes handwritten solar logbook photographs, extracts structured readings with multi-format date normalization (MM/DD/YY, YYYY-MM-DD variants), and returns validated JSON through Pydantic models. Engineered natural language SQL interface enabling users to query data in plain English—AI converts queries to SELECT statements, validates through Abstract Syntax Tree parsing, appends parameterized user filters, and automatically selects visualization type (line/stat/heatmap), preventing SQL injection through defense-in-depth validation. Designed production-ready SDE architecture: monorepo with pnpm workspaces and shared TypeScript types across frontend/backend, provider-agnostic AI abstraction supporting Gemini/OpenAI/Claude/local models without code changes, SQLAlchemy ORM supporting both PostgreSQL and Oracle databases, and row-level security policies enforcing multi-tenant isolation at the database layer. Built JWT authentication, rate limiting on AI endpoints, CORS configuration, and family collaboration system with invite tokens and membership tracking.`,
     logo: "ST", // TODO: Replace with actual logo path or keep text abbreviation
-    image: "/r/SolarTrack_Preview.png", // TODO: Add actual screenshot to /public/r/ directory
+    image: "/images/projects/solartrackProject.jpg",
     isExpanded: true,
-    isVisible: false,
-    category: "App" as const,
+    isVisible: true,
+    showGithubLink: false,
+    category: "ML/AI" as const,
     status: "In Progress" as const,
     updatedAt: "2025-01-03",
   },
@@ -62,6 +63,7 @@ export const PROJECTS: Project[] = [
     logo: "CI",
     image: "/r/CyberIntel__.gif",
     isExpanded: true,
+    showGithubLink: false,
     category: "ML/AI" as const,
     status: "Shipped" as const,
     updatedAt: "2024-12-15",
@@ -96,9 +98,6 @@ export const PROJECTS: Project[] = [
     status: "Shipped" as const,
     updatedAt: "2024-12-20",
   },
-
-  // Temporarily commented out projects - can be uncommented when needed
-  /*
   {
     id: "realtime-tweet-sentiment",
     title: "Real-Time Tweet Sentiment Analysis Pipeline",
@@ -122,8 +121,12 @@ export const PROJECTS: Project[] = [
     summary: `Real-time sentiment analysis pipeline processing 50K+ tweets per hour with 99.5% uptime. MLflow-packaged Hugging Face transformer achieving 92% accuracy with sub-200ms latency and Grafana monitoring for sentiment anomalies.`,
     description: `Comprehensive real-time data pipeline for analyzing tweet sentiment at scale, processing 50K+ tweets per hour through Bronze, Silver, Gold, and Application layers with 99.5% uptime. Deployed MLflow-packaged Hugging Face transformer achieving 92% accuracy with sub-200ms inference latency. Implemented auto-scaling Databricks clusters with optimized partitioning strategies, reducing query response times by 65% and enabling real-time aggregations across 1M+ tweet mentions. Engineered comprehensive monitoring system with Grafana dashboards and automated alerting for sentiment anomalies.`,
     logo: "/images/projects/realtime-tweet-sentiment.svg",
-    image: "/images/projects/placeholders/data-pipeline.svg",
+    image: "/images/projects/twiter_Project.jpg",
     isExpanded: false,
+    showGithubLink: false,
+    category: "ML/AI" as const,
+    status: "Shipped" as const,
+    updatedAt: "2025-03-15",
   },
   {
     id: "steam-insights",
@@ -146,9 +149,41 @@ export const PROJECTS: Project[] = [
     summary: `Gaming market analysis system processing 8M+ data points from 140K+ games with ETL pipeline using Airflow, Spark, and Kafka. Time series forecasting achieving 85% accuracy in genre demand predictions.`,
     description: `Comprehensive gaming market analysis and forecasting system processing 8M+ data points from 140K+ games. Built ETL pipeline with Apache Airflow, Databricks Spark, and Kafka. Developed ML models (XGBoost, Random Forest) for review analysis and pricing forecasts. Implemented time series forecasting (ARIMA, Prophet) achieving 85% accuracy in genre demand predictions and reliable sales forecasting.`,
     logo: "/images/projects/steam-insights.svg",
-    image: "/images/projects/placeholders/gaming-analytics.svg",
+    image: "/images/projects/steam_project.jpg",
     isExpanded: true,
+    showGithubLink: false,
+    category: "DS/DA" as const,
+    status: "Shipped" as const,
+    updatedAt: "2024-12-20",
   },
+  {
+    id: "hpc-chatbot",
+    title: "HPC Documentation Assistant",
+    period: {
+      start: "02.2025",
+    },
+    link: "https://github.com/PRawat00",
+    skills: [
+      "RAG Systems",
+      "Vector Databases",
+      "FastAPI",
+      "Docker",
+      "HPC Systems",
+      "Agentic AI",
+    ],
+    summary: `RAG-based chatbot for High Performance Computing documentation automation. Features agentic AI for dynamic data scraping, vector database management for HPC queries, and automated user onboarding system for university research computing infrastructure.`,
+    description: `RAG-based chatbot for High Performance Computing documentation automation. Features agentic AI for dynamic data scraping, vector database management for HPC queries, and automated user onboarding system for university research computing infrastructure.`,
+    logo: "/images/projects/hpc-chatbot.svg",
+    image: "/images/projects/HPC_project.png",
+    isExpanded: false,
+    showGithubLink: false,
+    category: "ML/AI" as const,
+    status: "In Progress" as const,
+    updatedAt: "2025-01-04",
+  },
+
+  // Temporarily commented out projects
+  /*
   {
     id: "finrag3",
     title: "FinRAG3 - Agentic Financial Document AI",
@@ -167,25 +202,6 @@ export const PROJECTS: Project[] = [
     ],
     description: `6-phase agentic AI system for automated investment due diligence processing SEC filings (10-K, 10-Q) and fund prospectuses. Features custom parsing algorithms with 95% accuracy, multi-GPU optimization, and enterprise-grade MLOps pipeline. Reduces financial document analysis time from hours to 5 minutes.`,
     logo: "/images/projects/finrag3.svg",
-    isExpanded: false,
-  },
-  {
-    id: "hpc-chatbot",
-    title: "HPC Documentation Assistant",
-    period: {
-      start: "02.2025",
-    },
-    link: "https://github.com/PRawat00",
-    skills: [
-      "RAG Systems",
-      "Vector Databases",
-      "FastAPI",
-      "Docker",
-      "HPC Systems",
-      "Agentic AI",
-    ],
-    description: `RAG-based chatbot for High Performance Computing documentation automation. Features agentic AI for dynamic data scraping, vector database management for HPC queries, and automated user onboarding system for university research computing infrastructure.`,
-    logo: "/images/projects/hpc-chatbot.svg",
     isExpanded: false,
   },
   {

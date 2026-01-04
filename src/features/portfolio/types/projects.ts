@@ -1,8 +1,8 @@
 export type ProjectCategory =
   | "Dashboard"
-  | "App"
   | "Website"
   | "ML/AI"
+  | "DS/DA"
   | "Data Engineering"
   | "Other";
 

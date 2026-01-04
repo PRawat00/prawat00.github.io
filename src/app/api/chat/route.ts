@@ -1,8 +1,43 @@
 import { xai } from "@ai-sdk/xai";
 import { streamText } from "ai";
+import { PROJECTS } from "@/features/portfolio/data/projects";
+import { EXPERIENCES } from "@/features/portfolio/data/experiences";
+import { USER } from "@/features/portfolio/data/user";
 
-// System prompt with Priyanshu's context
-const SYSTEM_PROMPT = `You are a helpful assistant on Priyanshu Rawat's portfolio website. Answer questions about his background, skills, and projects.
+// Dynamically generate system prompt from data files
+function generateSystemPrompt(): string {
+  // Extract current experience
+  const currentJob = EXPERIENCES.find((exp) => exp.isCurrentEmployer);
+  const currentPosition = currentJob?.positions[0];
+
+  // Format projects (visible projects only)
+  const visibleProjects = PROJECTS.filter((p) => p.isVisible !== false);
+  const projectSummaries = visibleProjects
+    .map((p) => `${p.title}: ${p.summary}`)
+    .join("\n");
+
+  // Format experience
+  const experienceSummaries = EXPERIENCES.map((exp) => {
+    const pos = exp.positions[0];
+    const period = pos.employmentPeriod.end
+      ? `${pos.employmentPeriod.start} to ${pos.employmentPeriod.end}`
+      : `${pos.employmentPeriod.start} to Present`;
+    return `${pos.title} at ${exp.companyName} (${period})`;
+  }).join(". ");
+
+  // Extract all unique skills from projects and experiences
+  const allSkills = new Set<string>();
+  visibleProjects.forEach((p) => p.skills.forEach((s) => allSkills.add(s)));
+  EXPERIENCES.forEach((exp) =>
+    exp.positions.forEach((pos) => {
+      if (pos.skills) {
+        pos.skills.forEach((s) => allSkills.add(s));
+      }
+    })
+  );
+  const skillsList = Array.from(allSkills).sort().join(", ");
+
+  return `You are a helpful assistant on ${USER.displayName}'s portfolio website. Answer questions about his background, skills, and projects.
 
 CRITICAL FORMATTING RULES:
 - Write in plain text only. Never use markdown formatting like ##, **, -, or numbered lists.
@@ -11,29 +46,30 @@ CRITICAL FORMATTING RULES:
 - Be concise: 2-4 sentences per response unless more detail is specifically asked for.
 - Answer the specific question asked. Don't dump all information at once.
 
-ABOUT PRIYANSHU:
-Priyanshu Rawat is a Data Scientist and ML Engineer based in New York. He specializes in RAG systems, agentic AI, MLOps, and LLM optimization.
-
-EDUCATION:
-MS in Data Science from University of Rochester (Aug 2024 to Dec 2025, GPA 3.83). BS in Computer Science from Graphic Era Hill University (Jul 2020 to Jul 2024, GPA 3.4).
+ABOUT ${USER.firstName.toUpperCase()}:
+${USER.bio}
 
 CURRENT ROLE:
-Data Scientist at University of Rochester's Center for Integrated Research Computing (CIRC) since Feb 2025. He builds production-grade multimodal RAG systems serving 1000+ researchers, developed ML-powered support ticket intelligence for 200K+ tickets, and deployed CI/CD infrastructure with 99.5% uptime.
+${currentPosition?.title} at ${currentJob?.companyName} since ${currentPosition?.employmentPeriod.start}. ${currentPosition?.description?.split("\n")[0] || ""}
 
-PREVIOUS EXPERIENCE:
-Data Science Intern at FLX AI (Jun to Jul 2025) where he built an autonomous financial analysis agent, OCR pipeline with 90% accuracy, and RAG pipeline with ColBERT v2. Data Analyst at Greene Career Center (Oct 2024 to May 2025) doing statistical analysis, ETL pipelines, and Tableau dashboards.
+EXPERIENCE HISTORY:
+${experienceSummaries}
 
-KEY PROJECTS:
-CyberIntel Summarizer is a real-time threat intelligence system with LoRA-fine-tuned LLM achieving 3x throughput improvement, analyzing 100+ daily CVEs. Wegmans Capstone used XGBoost on 5.6M transactions achieving 49% precision improvement for gluten sensitivity prediction.
+KEY PROJECTS (${visibleProjects.length} total):
+${projectSummaries}
 
 TECHNICAL SKILLS:
-AI and ML tools include RAG Systems, LangGraph, LangChain, PyTorch, TensorFlow, XGBoost, LoRA, QLoRA, and vLLM. Database experience includes PostgreSQL, pgvector, ChromaDB, Pinecone, and MongoDB. Infrastructure skills cover Docker, Kubernetes, AWS, CI/CD, MLOps, Airflow, and Kafka. Programming languages are Python, R, SQL, and Git.
+${skillsList}
 
 CONTACT:
-Email is prawat3@ur.rochester.edu. LinkedIn is linkedin.com/in/prwt. GitHub is github.com/PRawat00. Website is prwt.dev.
+Email: ${USER.email} (base64 encoded - decode if needed)
+LinkedIn: ${USER.otherWebsites.find((url) => url.includes("linkedin"))}
+GitHub: ${USER.otherWebsites.find((url) => url.includes("github"))}
+Website: ${USER.website}
 
 RESPONSE GUIDELINES:
-If someone asks who Priyanshu is, give a brief 2-3 sentence intro. If they want more details, they'll ask. If asked about something not covered here, politely say you don't have that specific information and suggest emailing Priyanshu directly. Never make up information.`;
+If someone asks who ${USER.firstName} is, give a brief 2-3 sentence intro. If they want more details, they'll ask. If asked about something not covered here, politely say you don't have that specific information and suggest visiting the website or emailing ${USER.firstName} directly. Never make up information.`;
+}
 
 export async function POST(request: Request) {
   try {
@@ -48,7 +84,7 @@ export async function POST(request: Request) {
 
     const result = streamText({
       model: xai("grok-4-1-fast-reasoning"),
-      system: SYSTEM_PROMPT,
+      system: generateSystemPrompt(),
       messages,
       temperature: 0.7,
     });

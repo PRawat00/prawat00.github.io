@@ -1,0 +1,100 @@
+---
+projectId: "solartrack"
+lastUpdated: "2025-01-03"
+---
+
+## Overview
+
+SolarTrack is a full-stack SaaS platform for solar energy monitoring that eliminates manual logbook data entry. The platform combines AI vision models to automatically extract handwritten solar readings with a natural language interface for querying data—all backed by a multi-tenant architecture designed for enterprise scale.
+
+The core challenge was making solar monitoring accessible without requiring users to manually type every reading into a database. Most solar installations maintain handwritten logbooks for maintenance records, but this data becomes siloed and inaccessible. SolarTrack solves this by letting users photograph their handwritten logs, automatically extracting the data, and then query it conversationally.
+
+## Technologies Used
+
+Next.js 15, React 19, Three.js, FastAPI, Python, Supabase, PostgreSQL, Docker, Gemini Vision API, JWT Auth, Row-Level Security, TypeScript, Tailwind CSS, React Three Fiber, SQLAlchemy
+
+## Handwritten Logbook Digitization
+
+### Goal
+
+Build an automated vision pipeline that processes photographs of handwritten solar logbooks and extracts structured energy readings with metadata like dates, temperatures, and notes.
+
+### Approach
+
+We integrated Google's Gemini Vision API to handle the computer vision task. The challenge wasn't just recognizing text—handwriting varies, dates come in different formats (MM/DD/YY, written forms, etc.), and extraction needs to be reliable since downstream analytics depends on it.
+
+The system sends photos to Gemini, which returns extracted text. We then parse and validate the results against a Pydantic schema to ensure the data matches expected fields (date, energy_kwh, temperature, notes). The validation catches malformed entries before they reach the database.
+
+One key architectural decision was avoiding vendor lock-in. While Gemini powers the current implementation, the AI abstraction layer supports swapping in OpenAI's GPT-4 Vision, Claude Vision, or even local models. This means we can adapt if a better provider emerges or if customers need on-premise deployments for data privacy.
+
+### Considerations
+
+Manual data entry defeats the purpose of a monitoring system—it's error-prone and tedious. By automating extraction, users can focus on operations instead of transcription. A single customer might have thousands of logbook entries; automated digitization makes historical data accessible for the first time.
+
+### Results & Impact
+
+The vision pipeline reliably extracts structured data from real-world handwritten entries with varying handwriting styles and document quality. This enables the natural language query system to work on fresh data, making it possible for customers to analyze their solar performance historically and in real-time.
+
+## Natural Language Query Interface
+
+### Goal
+
+Build a system that lets users ask questions about their solar data in plain English, with the backend automatically translating those requests into secure SQL queries that fetch and visualize the results.
+
+### Approach
+
+The natural language processor sends user queries to a language model that generates SQL. The key engineering challenge was making this secure—we can't just execute whatever SQL the model generates.
+
+We implemented defense-in-depth validation. First, Abstract Syntax Tree (AST) parsing ensures only SELECT statements are allowed—no DELETE, UPDATE, or other dangerous operations. Second, all user input parameters are automatically parameterized to prevent SQL injection. Third, database-level Row-Level Security ensures that even if something slips through, the database itself enforces that users only see their own data.
+
+The system also automatically selects the right visualization type for the result (line chart for trends, stats cards for aggregates, etc.), making analytics more intuitive.
+
+### Considerations
+
+SQL is a barrier for non-technical users. By accepting plain English queries, we make analytics accessible to anyone—installers, property managers, facility operators. They can ask "show me my average daily output" without learning query syntax.
+
+### Results & Impact
+
+Users can query their solar data conversationally. The multi-layer validation approach ensures queries execute safely without administrative overhead. The automatic visualization selection means results are immediately understandable without additional configuration.
+
+## Multi-Tenant Production Architecture
+
+### Goal
+
+Build a scalable backend architecture supporting multiple independent users and teams while maintaining strong data isolation and security.
+
+### Approach
+
+We structured the codebase as a monorepo with clear boundaries: frontend (Next.js), backend (FastAPI), shared TypeScript types, and utilities. This ensures type safety across the entire stack—the frontend and API stay in sync automatically.
+
+For the database, we chose PostgreSQL with Row-Level Security (RLS) policies. RLS is a powerful feature that enforces data isolation at the database level. Every query automatically filters rows based on the authenticated user, so even if an application bug exposes the query layer, the database still protects user data. This is far more robust than relying solely on application-level checks.
+
+We also designed the ORM abstraction (SQLAlchemy) to support both PostgreSQL and Oracle. Enterprise customers often require Oracle, so the architecture lets us support both databases without duplicating application code.
+
+For deployment, we containerized everything with Docker and designed services to work with Kubernetes, enabling horizontal scaling as usage grows.
+
+### Considerations
+
+A solar monitoring SaaS must protect customer data rigorously. Electricity consumption data is sensitive—revealing patterns about occupancy, lifestyle, or business operations. Multi-tenant isolation isn't optional; it's fundamental to the product.
+
+Using database-level security (RLS) rather than just application checks provides defense-in-depth. If there's ever a security vulnerability in the application layer, the database still enforces isolation.
+
+### Results & Impact
+
+The platform safely serves multiple independent customers. Each user's data is isolated at the database layer. The architecture scales horizontally with Kubernetes, and the support for multiple databases makes it flexible for different customer environments.
+
+## How It All Comes Together
+
+SolarTrack demonstrates how combining AI capabilities with disciplined software architecture creates products that work at real-world scale.
+
+The workflow is simple for end-users: photograph a logbook page, answer a question in plain English, get a graph of the results. Behind the scenes, the vision pipeline handles data extraction, the query system translates natural language to SQL, and the multi-tenant architecture ensures data stays isolated and secure.
+
+Key insights from building this:
+
+**AI accelerates, but doesn't replace engineering.** The Gemini Vision API is powerful, but wrapping it with validation schemas, error handling, and fallback logic is what makes it reliable for production. Similarly, language models can generate SQL, but they need defense-in-depth security validation before execution.
+
+**Type safety across the stack matters.** By sharing TypeScript types between frontend and backend through the monorepo, we caught mismatches early and reduced the common frontend-backend synchronization problems.
+
+**Database-level security is non-negotiable.** Row-Level Security makes the security model simple to reason about—the database itself guarantees isolation, not just the application code.
+
+SolarTrack shows that combining modern AI capabilities with solid software engineering and security practices creates systems that are both powerful for users and reliable for businesses.

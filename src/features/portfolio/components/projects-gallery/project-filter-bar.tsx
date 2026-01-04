@@ -29,9 +29,22 @@ export function ProjectFilterBar({
     return counts;
   }, [projects]);
 
+  // Define category order
+  const categoryOrder: Record<string, number> = {
+    All: 0,
+    "ML/AI": 1,
+    "DS/DA": 2,
+    Dashboard: 3,
+    Website: 4,
+    "Data Engineering": 5,
+    Other: 6,
+  };
+
   const categories: (ProjectCategory | "All")[] = [
     "All",
-    ...Array.from(new Set(projects.map((p) => p.category))).sort(),
+    ...Array.from(new Set(projects.map((p) => p.category))).sort(
+      (a, b) => (categoryOrder[a] || 99) - (categoryOrder[b] || 99)
+    ),
   ];
 
   return (
