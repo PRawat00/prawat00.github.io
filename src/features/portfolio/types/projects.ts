@@ -1,3 +1,13 @@
+export type ProjectCategory =
+  | "Dashboard"
+  | "App"
+  | "Website"
+  | "ML/AI"
+  | "Data Engineering"
+  | "Other";
+
+export type ProjectStatus = "Shipped" | "In Progress" | "Concept";
+
 export type Project = {
   id: string;
   title: string;
@@ -16,4 +26,7 @@ export type Project = {
   showGithubLink?: boolean;
   showDemoLink?: boolean;
   isVisible?: boolean;
+  category: ProjectCategory;
+  status: ProjectStatus;
+  updatedAt: string;
 };

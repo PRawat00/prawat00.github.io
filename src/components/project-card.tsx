@@ -11,16 +11,28 @@ import { cn } from "@/lib/utils";
 export function ProjectCard({
   project,
   onClick,
+  variant = "default",
 }: {
   project: Project;
   onClick?: () => void;
+  variant?: "default" | "gallery";
 }) {
   const { start, end } = project.period;
   const isOngoing = !end;
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick?.();
+    }
+  };
+
   return (
-    <button
+    <div
       onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
       className={cn(
         "group/project flex flex-col gap-0 overflow-hidden rounded-lg border border-edge text-left",
         "max-sm:screen-line-before max-sm:screen-line-after",
@@ -48,33 +60,38 @@ export function ProjectCard({
       <div className="flex flex-col gap-3 p-4">
         {/* Header: Logo + Title + Period */}
         <div className="flex items-start gap-3">
-          {project.logo ? (
-            project.logo.startsWith("/") || project.logo.startsWith("http") ? (
-              <Image
-                src={project.logo}
-                alt=""
-                width={32}
-                height={32}
-                quality={100}
-                className="size-8 shrink-0 rounded-lg object-cover"
-                unoptimized
-                aria-hidden="true"
-              />
-            ) : (
-              <div
-                className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary"
-                aria-hidden="true"
-              >
-                {project.logo}
-              </div>
-            )
-          ) : (
-            <div
-              className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground"
-              aria-hidden="true"
-            >
-              <Icons.project className="size-5" />
-            </div>
+          {variant !== "gallery" && (
+            <>
+              {project.logo ? (
+                project.logo.startsWith("/") ||
+                project.logo.startsWith("http") ? (
+                  <Image
+                    src={project.logo}
+                    alt=""
+                    width={32}
+                    height={32}
+                    quality={100}
+                    className="size-8 shrink-0 rounded-lg object-cover"
+                    unoptimized
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <div
+                    className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary"
+                    aria-hidden="true"
+                  >
+                    {project.logo}
+                  </div>
+                )
+              ) : (
+                <div
+                  className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground"
+                  aria-hidden="true"
+                >
+                  <Icons.project className="size-5" />
+                </div>
+              )}
+            </>
           )}
 
           <div className="min-w-0 flex-1">
@@ -104,7 +121,7 @@ export function ProjectCard({
         </div>
 
         {/* Summary */}
-        {project.summary && (
+        {project.summary && variant !== "gallery" && (
           <p className="line-clamp-3 text-sm text-muted-foreground">
             {project.summary}
           </p>
@@ -139,6 +156,6 @@ export function ProjectCard({
           </span>
         </div>
       </div>
-    </button>
+    </div>
   );
 }

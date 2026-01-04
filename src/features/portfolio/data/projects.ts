@@ -32,6 +32,9 @@ export const PROJECTS: Project[] = [
     image: "/r/SolarTrack_Preview.png", // TODO: Add actual screenshot to /public/r/ directory
     isExpanded: true,
     isVisible: false,
+    category: "App" as const,
+    status: "In Progress" as const,
+    updatedAt: "2025-01-03",
   },
   {
     id: "cyberintel-summarizer",
@@ -59,6 +62,9 @@ export const PROJECTS: Project[] = [
     logo: "CI",
     image: "/r/CyberIntel__.gif",
     isExpanded: true,
+    category: "ML/AI" as const,
+    status: "Shipped" as const,
+    updatedAt: "2024-12-15",
   },
   {
     id: "wegmans-capstone",
@@ -86,6 +92,9 @@ export const PROJECTS: Project[] = [
     isExpanded: false,
     showGithubLink: false,
     showDemoLink: false,
+    category: "ML/AI" as const,
+    status: "Shipped" as const,
+    updatedAt: "2024-12-20",
   },
 
   // Temporarily commented out projects - can be uncommented when needed
