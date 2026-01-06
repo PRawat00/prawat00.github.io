@@ -1,3 +1,4 @@
+// Cache refresh trigger - 2026-01-06
 import { USER } from "@/features/portfolio/data/user";
 import type { NavItem } from "@/types/nav";
 
