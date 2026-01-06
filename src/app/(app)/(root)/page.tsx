@@ -8,6 +8,7 @@ import { Brand } from "@/features/portfolio/components/brand";
 import { Education } from "@/features/portfolio/components/education";
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { Featured } from "@/features/portfolio/components/featured";
+import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
 import { Overview } from "@/features/portfolio/components/overview";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
@@ -41,6 +42,9 @@ export default function Page() {
         <Separator />
 
         <TechStack />
+        <Separator />
+
+        <GitHubContributions />
         <Separator />
 
         {/* <Featured /> */}
