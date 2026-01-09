@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
     summary: `Full-stack SaaS platform combining AI vision models for automated handwritten log digitization with natural language querying. Solves the manual data entry bottleneck in renewable energy monitoring by enabling users to photograph logbooks and extract structured readings through computer vision.`,
     description: `Tackles the critical challenge in solar energy monitoring: manual logbook entry is time-consuming, error-prone, and limits scalability. Built an AI-powered system that understands handwritten solar readings through vision models, enabling instant data extraction from photographs. The platform goes beyond simple OCR—it supports natural language queries ("Show me sunny days last month") that are intelligently converted to analytics, democratizing access to solar data without requiring technical expertise. Addressed the practical problem of multi-user renewable energy facilities with family-based collaboration and secure data isolation, recognizing that many residential solar systems are managed by multiple people who need different access levels. The solution bridges the gap between manual, fragmented logging and automated, queryable energy analytics.`,
     logo: "ST", // TODO: Replace with actual logo path or keep text abbreviation
-    image: "/images/projects/solartrackProject.jpg",
+    image: "/r/Solartrack_main.gif",
     isExpanded: true,
     isVisible: true,
     showGithubLink: false,
