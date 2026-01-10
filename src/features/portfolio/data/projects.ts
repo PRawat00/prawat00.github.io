@@ -99,6 +99,31 @@ export const PROJECTS: Project[] = [
     updatedAt: "2024-12-20",
   },
   {
+    id: "hpc-chatbot",
+    title: "HPC Documentation Assistant",
+    period: {
+      start: "02.2025",
+    },
+    link: "https://github.com/PRawat00",
+    skills: [
+      "RAG Systems",
+      "Vector Databases",
+      "FastAPI",
+      "Docker",
+      "HPC Systems",
+      "Agentic AI",
+    ],
+    summary: `AI-powered documentation assistant for High Performance Computing systems using RAG. Helps 1000+ researchers quickly find answers across massive technical documentation without searching.`,
+    description: `Tackles a fundamental usability challenge in scientific computing: HPC systems are extraordinarily complex, with thousands of pages of specialized documentation. Researchers waste hours searching documentation, digging through forums, or asking support teams questions that are already answered. Engineered an intelligent documentation system using Retrieval-Augmented Generation (RAG) that instantly finds relevant answers from massive technical documentation. The core AI challenge is semantic understanding—converting natural language questions into precise searches across dense, technical documentation where keyword matching fails. Instead of expecting researchers to memorize commands or navigate nested documentation trees, they ask questions in plain language and get instant, accurate answers. The system continuously learns from new documentation and support interactions, staying current as HPC systems evolve. Democratizes access to complex research infrastructure by making it discoverable and navigable for researchers at all expertise levels.`,
+    logo: "/images/projects/Slurm_logo.svg",
+    image: "/r/HPC_GIF.gif",
+    isExpanded: false,
+    showGithubLink: false,
+    category: "ML/AI" as const,
+    status: "In Progress" as const,
+    updatedAt: "2025-01-04",
+  },
+  {
     id: "realtime-tweet-sentiment",
     title: "Real-Time Tweet Sentiment Analysis Pipeline",
     period: {
@@ -155,31 +180,6 @@ export const PROJECTS: Project[] = [
     category: "DS/DA" as const,
     status: "Shipped" as const,
     updatedAt: "2024-12-20",
-  },
-  {
-    id: "hpc-chatbot",
-    title: "HPC Documentation Assistant",
-    period: {
-      start: "02.2025",
-    },
-    link: "https://github.com/PRawat00",
-    skills: [
-      "RAG Systems",
-      "Vector Databases",
-      "FastAPI",
-      "Docker",
-      "HPC Systems",
-      "Agentic AI",
-    ],
-    summary: `AI-powered documentation assistant for High Performance Computing systems using RAG. Helps 1000+ researchers quickly find answers across massive technical documentation without searching.`,
-    description: `Tackles a fundamental usability challenge in scientific computing: HPC systems are extraordinarily complex, with thousands of pages of specialized documentation. Researchers waste hours searching documentation, digging through forums, or asking support teams questions that are already answered. Engineered an intelligent documentation system using Retrieval-Augmented Generation (RAG) that instantly finds relevant answers from massive technical documentation. The core AI challenge is semantic understanding—converting natural language questions into precise searches across dense, technical documentation where keyword matching fails. Instead of expecting researchers to memorize commands or navigate nested documentation trees, they ask questions in plain language and get instant, accurate answers. The system continuously learns from new documentation and support interactions, staying current as HPC systems evolve. Democratizes access to complex research infrastructure by making it discoverable and navigable for researchers at all expertise levels.`,
-    logo: "/images/projects/Slurm_logo.svg",
-    image: "/images/projects/HPC_project.png",
-    isExpanded: false,
-    showGithubLink: false,
-    category: "ML/AI" as const,
-    status: "In Progress" as const,
-    updatedAt: "2025-01-04",
   },
 
   // Temporarily commented out projects
