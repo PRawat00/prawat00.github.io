@@ -174,7 +174,7 @@ export const PROJECTS: Project[] = [
     summary: `Predictive analytics platform forecasting gaming market trends and demand with 85% accuracy. Analyzes 8M+ data points across 140K+ games to guide development priorities, pricing strategies, and marketing decisions.`,
     description: `Solves a critical business intelligence gap in gaming: What makes games succeed? Which trends will sustain? Game studios and publishers operate with incomplete market visibility, often betting millions on projects without data-driven forecasts. Engineered a predictive system that continuously analyzes gaming market data to forecast genre demand, predict price sensitivity, and identify emerging opportunities. The ML challenge involves feature engineering across disparate data sources (reviews, sales, player engagement patterns) and applying multiple forecasting techniques to capture both short-term trends and long-term shifts. Transforms raw gaming data into actionable intelligence: Studios can forecast whether investing in a genre will pay off, identify underserved market segments, and optimize pricing for maximum revenue. Demonstrates how advanced analytics can reduce business risk in creative industries where intuition traditionally dominates decision-making.`,
     logo: "/images/projects/steam.svg",
-    image: "/images/projects/steam_project.jpg",
+    image: "/r/Steam_gif.gif",
     isExpanded: true,
     showGithubLink: false,
     category: "DS/DA" as const,
