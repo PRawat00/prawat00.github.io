@@ -5,7 +5,7 @@ export const PROJECTS: Project[] = [
     id: "solartrack",
     title: "SolarTrack - AI-Powered Solar Analytics Platform",
     period: {
-      start: "MM.YYYY", // TODO: Replace with actual start date (e.g., "01.2025")
+      start: "12.2024",
     },
     link: "https://github.com/YOUR_USERNAME/solartrack", // TODO: Replace with actual GitHub URL
     demoLink: "https://solartrack.prwt.dev", // TODO: Replace with actual demo URL
