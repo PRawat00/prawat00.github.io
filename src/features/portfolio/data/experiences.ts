@@ -14,9 +14,11 @@ export const EXPERIENCES: Experience[] = [
         },
         employmentType: "Part-time",
         icon: "education",
-        description: `- Engineered ML-powered support ticket intelligence system analyzing 200K+ tickets with automated triage across system administrators, computational scientists, and management, reducing manual workload by 60%
-- Built production-grade multimodal RAG system integrating SQL databases, documentation and real-time cluster data using LangGraph, FastAPI, and Docker, serving 1000+ users for job scheduling, resource optimization, and troubleshooting
-- Deployed comprehensive CI/CD and MLOps infrastructure for RAG chatbot with automated testing, model deployment, performance monitoring, and version control, achieving 99.5% uptime while supporting continuous feature releases and model updates`,
+        description: `- Built agentic RAG system with hybrid search and context reranking, integrating multi-source knowledge (SQL databases, documentation, cluster metrics) using dynamic tool-calling and LangGraph orchestration, deployed via FastAPI and Docker, serving 1000+ users for HPC job scheduling, resource optimization, and troubleshooting with LangFuse monitoring
+- Deployed self-hosted LLM via vLLM and FastAPI for automated support ticket summaries and resolution suggestions using RAG retrieval from vector database of 200K+ tickets anonymized for compliance, reducing support response time by 40%
+- Built multi-task BERT classifier deployed via FastAPI with JWT authentication for ticket categorization across 4 teams and 4 priority levels (85% precision, 83% recall on 200K+ tickets), providing classification layer for LLM summarization and resolution workflow
+- Designed evaluation framework with 1000 curated query-resolution pairs, measuring retrieval quality (precision@k, MRR) and generation quality (RAGAS faithfulness, answer relevancy) using self-hosted LLM-as-judge for automated, reproducible scoring
+- Configured GitLab CI/CD pipelines with Prometheus/Grafana monitoring and comprehensive automated testing, enabling reliable continuous deployment of ML and RAG systems with 99.5% uptime and automated rollback capabilities`,
         skills: [
           "LangGraph",
           "FastAPI",
@@ -24,8 +26,13 @@ export const EXPERIENCES: Experience[] = [
           "RAG Systems",
           "Vector Databases",
           "SQL",
-          "CI/CD",
-          "MLOps",
+          "vLLM",
+          "BERT",
+          "JWT",
+          "LangFuse",
+          "GitLab CI",
+          "Prometheus",
+          "Grafana",
           "HPC Systems",
           "Agentic AI",
         ],
@@ -48,19 +55,54 @@ export const EXPERIENCES: Experience[] = [
         },
         employmentType: "Internship",
         icon: "code",
-        description: `- Cut financial analysis time from days to hours by engineering an autonomous agent that synthesizes 500+ pages of SEC filings (10-K, 8-K) to generate instant answers
-- Engineered an OCR pipeline (90% accuracy on financial tables) using Docling that implemented section-based chunking while preserving and linking citation metadata to enable precise source attribution
-- Engineered a RAG pipeline (FastAPI/pgvector) with a ColBERT v2 re-ranker, cutting latency by 75% by implementing the PLAID search engine and dynamic batching`,
+        description: `- Built agentic RAG chatbot for financial document analysis, automating fund manager due diligence with 112-question questionnaires on SEC filings (10-K, 10-Q), achieving 70-75% accuracy compared to human analyst answers
+- Set up ETL pipeline using Docling OCR to process scanned financial documents and extract structured data from complex financial tables for downstream RAG retrieval
+- Designed section-aware chunking strategy with citation metadata linking, preserving document structure and enabling accurate source attribution for all generated responses
+- Deployed hybrid retrieval (semantic + lexical) with LangGraph agent orchestration, reducing query latency by 75% through dynamic batching and optimized concurrent processing`,
         skills: [
           "LangGraph",
           "FastAPI",
-          "ColBERT v2",
-          "PostgreSQL",
           "pgvector",
+          "PostgreSQL",
           "Docker",
           "Docling",
           "OCR",
-          "PLAID",
+          "RAG Systems",
+          "Agentic AI",
+          "ETL",
+          "Hybrid Retrieval",
+        ],
+        isExpanded: false,
+      },
+    ],
+    isCurrentEmployer: false,
+  },
+  {
+    id: "k-labs-uor",
+    companyName: "K-Labs: Continual Learning Lab, UoR",
+    companyLogo: "/images/companies/uor-circ.svg",
+    positions: [
+      {
+        id: "k-labs-ml-research",
+        title: "ML Research Assistant",
+        employmentPeriod: {
+          start: "09.2024",
+          end: "01.2025",
+        },
+        employmentType: "Part-time",
+        icon: "code",
+        description: `- Engineered and benchmarked Vision Transformer (ViT) and CNN models for domain generalization, implementing architectural modifications to enhance cross-domain performance
+- Reduced model training time by approximately 50% through Distributed Data Parallel (DDP) and Automatic Mixed Precision (AMP) implementation for multi-GPU training in PyTorch
+- Implemented experiment tracking with Weights & Biases to analyze regularization strategies and their effects on model learning, presenting comparative results to research team`,
+        skills: [
+          "PyTorch",
+          "Vision Transformers",
+          "CNNs",
+          "DDP",
+          "AMP",
+          "Multi-GPU Training",
+          "Weights & Biases",
+          "Domain Generalization",
         ],
         isExpanded: false,
       },
