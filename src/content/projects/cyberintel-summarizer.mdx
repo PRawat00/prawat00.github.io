@@ -5,114 +5,117 @@ lastUpdated: "2025-01-03"
 
 ## Overview
 
-CyberIntel Summarizer is a real-time threat intelligence system that automatically ingests CVE updates from NVD, CISA, and MITRE ATT&CK feeds, then generates structured intelligence summaries with severity classifications and recommended mitigations.
+CyberIntel Agent is an automated CVE analysis system that scans NPM and Python library vulnerabilities, generating AI-powered fix recommendations using semantic similarity and few-shot learning techniques.
 
-Security teams face a constant influx of threat notifications—sometimes 100+ CVE updates per day. Most require manual review to understand what's actually relevant to an organization. CyberIntel addresses this by automatically processing and summarizing threats, surfacing what matters most and why.
+Development teams face a constant challenge keeping dependencies secure. When a new CVE drops affecting a common library, the questions are immediate: Does this affect us? What versions are vulnerable? What should we update to? CyberIntel addresses this by automatically analyzing vulnerabilities in the context of NPM and Python ecosystems, providing actionable fix recommendations rather than generic threat descriptions.
 
 ## Demo
 
-![CyberIntel Summarizer Workflow](/r/CyberIntel__.gif)
+![CyberIntel Agent Workflow](/r/CyberIntel__.gif)
 
-_CyberIntel Summarizer processing real-time CVE feeds: automated ingestion, LLM-powered summarization, and threat prioritization dashboard._
+_CyberIntel Agent processing CVE feeds: automated ingestion via AWS Lambda, LLM-powered analysis with fix recommendations, and Next.js dashboard for vulnerability tracking._
 
 ## Technologies Used
 
-LoRA, vLLM, 4-bit Quantization, FastAPI, PostgreSQL, Streamlit, Dynamic Batching, Paged Attention, NVD, CISA, MITRE ATT&CK
+AWS Lambda, S3, EventBridge, EC2, Docker, Next.js, AWS Cognito, RDS PostgreSQL, CloudWatch, LoRA, vLLM, 8-bit Quantization, Semantic Similarity, Few-shot Learning, NVD, CISA, MITRE ATT&CK
 
-## Real-Time Threat Feed Ingestion
-
-### Goal
-
-Build an automated pipeline that continuously monitors CVE sources (NVD, CISA, MITRE ATT&CK) and processes new vulnerability disclosures as they're published.
-
-### Approach
-
-We built data ingestion connectors for each threat feed. These run on a schedule to pull new CVEs, check for duplicates, and enqueue new threats for processing. The system normalizes data from different sources into a common schema so the downstream analysis treats them consistently.
-
-### Considerations
-
-Manual threat tracking is impossible at scale. Security teams can't monitor five different threat feeds and manually correlate them. Automation ensures no threats slip through just because analysts were too busy.
-
-### Results & Impact
-
-The system processes 100+ daily CVE updates automatically, continuously expanding the threat database. Analysts see new threats immediately rather than discovering them hours or days later.
-
-## LLM-Powered Threat Summarization
+## Serverless ETL Pipeline
 
 ### Goal
 
-Build a summarization system that reads raw CVE descriptions and generates concise, structured intelligence including severity assessment, affected systems, exploitation requirements, and recommended mitigations.
+Build an automated pipeline that continuously monitors CVE sources (NVD, CISA, MITRE ATT&CK) and processes new vulnerability disclosures with minimal infrastructure overhead.
 
 ### Approach
 
-We fine-tuned an open-source LLM using LoRA (Low-Rank Adaptation). Fine-tuning on security-specific data helps the model understand threat language and generate more relevant summaries than an off-the-shelf model.
+We engineered a serverless ETL pipeline using AWS Lambda functions orchestrated by EventBridge schedules. New CVE data is ingested, normalized, and stored in S3 for processing. The Lambda functions handle data transformation and deduplication, ensuring consistent schema across different threat feed formats.
 
-To make this performant, we applied 4-bit quantization to reduce model size and memory requirements. This has a secondary benefit: with a smaller model, we can run inference on less powerful hardware, reducing infrastructure costs.
-
-For throughput, we deployed the model with vLLM, which uses dynamic batching and paged attention—techniques that batch multiple inference requests together and manage memory more efficiently. These optimizations are critical when processing dozens of threat updates simultaneously.
+EventBridge triggers ensure the pipeline runs on schedule without manual intervention, while S3 provides durable storage for both raw feeds and processed results.
 
 ### Considerations
 
-Raw CVE descriptions are often verbose and technical. A security analyst reading 100 CVE descriptions per day will miss important details through fatigue. A summarization system that extracts key information (what's vulnerable, how it's exploited, who should care) transforms threat analysis from an endurance test to a triage exercise.
+Traditional server-based pipelines require constant maintenance and scaling decisions. A serverless architecture with Lambda and EventBridge eliminates infrastructure management overhead while automatically scaling with ingestion volume. This lets us focus on the analysis logic rather than server operations.
 
 ### Results & Impact
 
-The system generates summaries much faster than a human analyst could. The LoRA fine-tuning ensures summaries are in security-relevant language rather than generic. Quantization and vLLM optimizations mean we achieve 3x throughput improvement and 60% memory reduction compared to running the base model, enabling real-time processing of high volumes.
+The system continuously ingests CVE updates from multiple sources with zero infrastructure maintenance. The serverless architecture scales automatically during high-volume disclosure periods and costs nothing when idle.
 
-## Risk Scoring & Prioritization
+## LLM-Powered Vulnerability Analysis
 
 ### Goal
 
-Build a system that assigns priority scores to threats based on organizational relevance—what matters for a hospital is different from what matters for a financial services company.
+Build an analysis system that reads CVE descriptions and generates fix recommendations specific to NPM and Python library vulnerabilities, including safe version ranges and migration guidance.
 
 ### Approach
 
-The scoring considers multiple factors: CVSS score indicates baseline severity, but organizational factors matter more. A critical vulnerability in software nobody uses is less urgent than a moderate vulnerability in enterprise-standard software. We track software prevalence in enterprise environments, whether public exploits are available, and whether there are known mitigations already deployed.
+We fine-tuned an open-source LLM using LoRA (Low-Rank Adaptation) on security-specific data with emphasis on package ecosystem context. The model uses semantic similarity to match CVEs against known vulnerability patterns and few-shot learning to generalize fix recommendations to novel vulnerabilities.
+
+For memory efficiency, we applied 8-bit quantization, achieving 50% memory reduction compared to FP16 baseline. This enables deployment on cost-effective EC2 instances while maintaining quality. The model is served via vLLM with dynamic batching for high throughput.
 
 ### Considerations
 
-Not all threats are equal. Without prioritization, analysts focus on the loudest alerts rather than the most relevant ones. A scoring system that ranks threats by actual organizational impact helps teams focus where it matters.
+Generic CVE descriptions don't tell developers what to actually do. A vulnerability in `lodash < 4.17.21` needs specific guidance: "Update to 4.17.21 or later, test for breaking changes in \_.template()." Semantic similarity helps the model understand that similar vulnerabilities have similar fixes, while few-shot learning enables accurate recommendations even for newly discovered vulnerability patterns.
 
 ### Results & Impact
 
-Analysts receive a prioritized queue of threats rather than an unordered list. This dramatically improves triage efficiency—they work on what's actually relevant to their organization rather than what's trending in the security community.
+The system achieves 90% precision on novel CVE analysis with sub-second inference latency. Fix recommendations are specific to the affected package ecosystems, giving developers actionable guidance rather than generic threat descriptions.
 
-## Production Monitoring & Dashboards
+## Production Infrastructure
 
 ### Goal
 
-Build a Streamlit dashboard that displays threat analytics in real-time, showing severity distributions, attack vectors, affected software, and performance metrics.
+Build a production-ready system with proper authentication, data persistence, and monitoring that can serve as a reliable tool for development teams.
 
 ### Approach
 
-The dashboard connects directly to the PostgreSQL database storing processed threats. It includes:
+The system runs on AWS EC2 with Docker containers for consistent deployment. The frontend is built with Next.js, providing a responsive interface for vulnerability search and analysis. AWS Cognito handles user authentication, ensuring only authorized users access the system.
 
-- Real-time threat filtering by severity, attack vector, vendor
-- Interactive performance benchmarking showing how different inference configurations affect throughput
-- Historical trend analysis to spot patterns (e.g., are attacks against cloud platforms increasing?)
-
-The dashboard is self-documenting—security teams can explore the data themselves rather than waiting for analyst reports.
+Vulnerability data and analysis results persist in RDS PostgreSQL, enabling historical queries and trend analysis. CloudWatch provides comprehensive monitoring with alerting for system health issues.
 
 ### Considerations
 
-Visibility is foundational for security operations. The dashboard gives the team a single pane of glass for threat intelligence rather than scattered data across multiple tools.
+A security tool must itself be secure and reliable. AWS Cognito provides enterprise-grade authentication without building custom auth. RDS PostgreSQL ensures data durability with automated backups. CloudWatch monitoring catches issues before they affect users.
 
 ### Results & Impact
 
-The team gains operational visibility into the threat landscape. They can answer questions like "are there more network-based vulnerabilities this week?" without manual queries.
+The production system maintains 99.5% uptime SLA. Users can reliably access vulnerability analysis when they need it, with proper access controls and audit trails.
+
+## Monitoring & Dashboard
+
+### Goal
+
+Build a Next.js dashboard that displays vulnerability analytics, search functionality, and fix recommendations in a developer-friendly interface.
+
+### Approach
+
+The dashboard connects to the RDS PostgreSQL database and presents:
+
+- Vulnerability search by package name, CVE ID, or affected version
+- Fix recommendations with specific version guidance
+- Severity distributions and trend analysis
+- Package ecosystem breakdowns (NPM vs Python)
+
+The Next.js frontend provides responsive performance with server-side rendering for initial load speed.
+
+### Considerations
+
+Developers need to quickly answer "does this CVE affect my dependencies?" The dashboard optimizes for this query pattern, with search as the primary interaction. Fix recommendations are prominently displayed alongside vulnerability details.
+
+### Results & Impact
+
+Development teams can search for vulnerabilities and get actionable fix recommendations in seconds. The dashboard serves as a single source of truth for dependency security decisions.
 
 ## How It All Comes Together
 
-CyberIntel Summarizer demonstrates how combining multiple ML techniques with solid infrastructure creates tools that actually improve security operations.
+CyberIntel Agent demonstrates how combining serverless data pipelines with fine-tuned LLMs creates tools that directly help development teams secure their dependencies.
 
-The architecture has three layers: **ingestion** (monitoring threat feeds), **analysis** (LLM summarization and scoring), and **presentation** (dashboard and API).
+The architecture has three layers: **ingestion** (AWS Lambda ETL pipeline), **analysis** (LoRA fine-tuned model with semantic similarity and few-shot learning), and **presentation** (Next.js dashboard with Cognito auth).
 
 Key insights from building this:
 
-**Quantization and optimization techniques aren't just cost-saving—they're enablers.** By optimizing model size and inference performance, we can process threat updates in real-time rather than batching them for overnight analysis. This shifts threat intelligence from reactive (batch processing) to proactive (real-time).
+**Package ecosystem context matters.** Generic CVE analysis doesn't help developers. By focusing on NPM and Python libraries specifically, the system generates fix recommendations that are immediately actionable: specific version numbers, migration notes, and compatibility warnings.
 
-**Domain-specific fine-tuning matters.** A model fine-tuned on security data generates better threat summaries than a general-purpose model. Security language is specific and consistent, so relatively small amounts of fine-tuning data improve quality significantly.
+**Serverless for data pipelines, containers for ML.** Lambda handles bursty ETL workloads efficiently, while EC2 with Docker provides the GPU resources and consistent environment needed for model inference. Each component uses the right compute model for its workload.
 
-**The human-AI relationship in security.** This tool doesn't replace security analysts—it amplifies them. The system handles the repetitive work (reading CVE descriptions, extracting key facts), freeing analysts to focus on strategic questions (do we use this software? How critical is it? What's our response?).
+**Production reliability enables adoption.** A security tool that's down when you need it is useless. The 99.5% uptime SLA, proper authentication, and comprehensive monitoring mean teams can rely on CyberIntel as part of their security workflow.
 
-CyberIntel shows that automation in security is most effective when it handles high-volume, low-judgment work and surfaces results to humans who make the final decisions.
+CyberIntel shows that ML-powered security tools are most effective when they're specific to a problem domain (package vulnerabilities), integrated with the right infrastructure (AWS services), and reliable enough for production use.

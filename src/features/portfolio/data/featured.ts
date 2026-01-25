@@ -10,9 +10,9 @@ export const featuredItems: FeaturedItem[] = [
   },
   {
     id: "cyberintel",
-    title: "CyberIntel Summarizer",
+    title: "CyberIntel Agent",
     description:
-      "Real-time threat intelligence system with fine-tuned LLMs analyzing 100+ daily CVE updates",
+      "Automated CVE analysis for NPM/Python libraries with AI-powered fix recommendations on AWS infrastructure",
     image: "/r/CyberIntel__.gif",
     projectId: "cyberintel-summarizer",
     new: true,
