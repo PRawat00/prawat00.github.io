@@ -26,7 +26,7 @@ export const USER: User = {
     "https://twitter.com/prwt_dev",
     "https://medium.com/@prwt",
   ],
-  jobTitle: "Data Scientist & ML Engineer",
+  jobTitle: "Machine Learning Engineer",
   jobs: [
     {
       title: "Data Scientist",
