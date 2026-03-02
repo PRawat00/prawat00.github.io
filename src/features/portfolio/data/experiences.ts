@@ -7,12 +7,45 @@ export const EXPERIENCES: Experience[] = [
     companyLogo: "/images/companies/uor-circ.svg",
     positions: [
       {
-        id: "uor-circ-data-scientist",
-        title: "Data Scientist",
+        id: "uor-circ-ml-engineer-pt",
+        title: "Machine Learning Engineer",
         employmentPeriod: {
           start: "03.2025",
+          end: "12.2025",
         },
         employmentType: "Part-time",
+        icon: "education",
+        description: `- Built agentic RAG system with hybrid search and context reranking, integrating multi-source knowledge (SQL databases, documentation, cluster metrics) using dynamic tool-calling and LangGraph orchestration, deployed via FastAPI and Docker, serving 1000+ users for HPC job scheduling, resource optimization, and troubleshooting with LangFuse monitoring
+- Deployed self-hosted LLM via vLLM and FastAPI for automated support ticket summaries and resolution suggestions using RAG retrieval from vector database of 200K+ tickets anonymized for compliance, reducing support response time by 40%
+- Built multi-task BERT classifier deployed via FastAPI with JWT authentication for ticket categorization across 4 teams and 4 priority levels (85% precision, 83% recall on 200K+ tickets), providing classification layer for LLM summarization and resolution workflow
+- Designed evaluation framework with 1000 curated query-resolution pairs, measuring retrieval quality (precision@k, MRR) and generation quality (RAGAS faithfulness, answer relevancy) using self-hosted LLM-as-judge for automated, reproducible scoring
+- Configured GitLab CI/CD pipelines with Prometheus/Grafana monitoring and comprehensive automated testing, enabling reliable continuous deployment of ML and RAG systems with 99.5% uptime and automated rollback capabilities`,
+        skills: [
+          "LangGraph",
+          "FastAPI",
+          "Docker",
+          "RAG Systems",
+          "Vector Databases",
+          "SQL",
+          "vLLM",
+          "BERT",
+          "JWT",
+          "LangFuse",
+          "GitLab CI",
+          "Prometheus",
+          "Grafana",
+          "HPC Systems",
+          "Agentic AI",
+        ],
+        isExpanded: false,
+      },
+      {
+        id: "uor-circ-ml-engineer-ft",
+        title: "Machine Learning Engineer",
+        employmentPeriod: {
+          start: "03.2026",
+        },
+        employmentType: "Full-time",
         icon: "education",
         description: `- Built agentic RAG system with hybrid search and context reranking, integrating multi-source knowledge (SQL databases, documentation, cluster metrics) using dynamic tool-calling and LangGraph orchestration, deployed via FastAPI and Docker, serving 1000+ users for HPC job scheduling, resource optimization, and troubleshooting with LangFuse monitoring
 - Deployed self-hosted LLM via vLLM and FastAPI for automated support ticket summaries and resolution suggestions using RAG retrieval from vector database of 200K+ tickets anonymized for compliance, reducing support response time by 40%
