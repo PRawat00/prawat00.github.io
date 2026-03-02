@@ -29,8 +29,8 @@ export const USER: User = {
   jobTitle: "Machine Learning Engineer",
   jobs: [
     {
-      title: "Data Scientist",
-      company: "CIRC, UofR",
+      title: "Machine Learning Engineer",
+      company: "UofR - CIRC",
       website: "https://www.circ.rochester.edu",
     },
   ],
